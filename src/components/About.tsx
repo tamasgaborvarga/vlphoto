@@ -62,7 +62,7 @@ export function About() {
               {site.photographer}
             </h2>
 
-            <p className="mt-6 font-display text-xl italic text-strong sm:text-2xl">
+            <p className="mt-6 font-display text-xl text-strong sm:text-2xl">
               Fotográfus, {site.region}en.
             </p>
 
