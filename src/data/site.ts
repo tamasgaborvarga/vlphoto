@@ -18,9 +18,9 @@ export const site = {
 
 export type NavLink = { id: string; label: string };
 
+/** Szándékosan három pont — a rövid navigáció prémiumabb hatású. */
 export const navLinks: NavLink[] = [
-  { id: "galeria", label: "Galéria" },
-  { id: "rolam", label: "Rólam" },
-  { id: "szolgaltatasok", label: "Szolgáltatások" },
-  { id: "kapcsolat", label: "Kapcsolat" },
+  { id: "work", label: "Work" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
 ];

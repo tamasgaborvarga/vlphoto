@@ -1,14 +1,18 @@
 import { useState, type FormEvent } from "react";
-import { Send } from "lucide-react";
 import { site } from "../data/site";
-import { services } from "../data/services";
 
-const OTHER = "Egyéb / még nem tudom";
+/** A megrendelő által megerősített négy kategória + egy nyitott válasz. */
+const TIPUSOK = [
+  "Portréfotózás",
+  "Jegyes és páros fotózás",
+  "Kreatív szabadtéri fotózás",
+  "Karácsonyi és szezonális fotózás",
+  "Egyéb / még nem tudom",
+];
 
 /**
  * A form NEM küld adatot szervernek: a levelezőprogramban nyit meg egy
- * előre kitöltött e-mailt. Így nincs backend, és nincs adattárolás sem.
- * Szerveres küldéshez (pl. Formspree) lásd a README-t.
+ * előre kitöltött e-mailt. Így nincs backend és nincs adatkezelés sem.
  */
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -16,35 +20,29 @@ export function ContactForm() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-
-    const name = String(data.get("nev") ?? "");
+    const nev = String(data.get("nev") ?? "");
     const email = String(data.get("email") ?? "");
-    const type = String(data.get("tipus") ?? "");
-    const message = String(data.get("uzenet") ?? "");
+    const tipus = String(data.get("tipus") ?? "");
+    const uzenet = String(data.get("uzenet") ?? "");
 
-    const subject = `Fotózás – érdeklődés (${type})`;
-    const body = [
-      `Név: ${name}`,
-      `E-mail: ${email}`,
-      `Fotózás típusa: ${type}`,
-      "",
-      message,
-    ].join("\n");
+    const subject = `Fotózás – érdeklődés (${tipus})`;
+    const body = [`Név: ${nev}`, `E-mail: ${email}`, `Fotózás típusa: ${tipus}`, "", uzenet].join(
+      "\n",
+    );
 
     window.location.href = `${site.emailHref}?subject=${encodeURIComponent(
       subject,
     )}&body=${encodeURIComponent(body)}`;
-
     setSent(true);
   };
 
   const field =
-    "w-full border-b border-line bg-transparent py-3 text-base font-light text-fg outline-none transition-colors duration-300 placeholder:text-muted focus:border-fg";
-  const label = "text-[0.6rem] font-light font-mono uppercase tracking-[0.28em] text-muted";
+    "w-full border-b border-line bg-transparent py-3 text-base text-fg outline-none transition-colors duration-500 placeholder:text-muted focus:border-fg";
+  const label = "font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="grid gap-8 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-9">
+      <div className="grid gap-9 sm:grid-cols-2">
         <div>
           <label htmlFor="nev" className={label}>
             Név
@@ -55,11 +53,9 @@ export function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="Teljes neved"
             className={`${field} mt-2`}
           />
         </div>
-
         <div>
           <label htmlFor="email" className={label}>
             E-mail
@@ -70,7 +66,6 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="pelda@email.hu"
             className={`${field} mt-2`}
           />
         </div>
@@ -82,14 +77,13 @@ export function ContactForm() {
         </label>
         <select id="tipus" name="tipus" required defaultValue="" className={`${field} mt-2`}>
           <option value="" disabled>
-            Válassz…
+            Válassz
           </option>
-          {services.map((service) => (
-            <option key={service.id} value={service.title}>
-              {service.title}
+          {TIPUSOK.map((t) => (
+            <option key={t} value={t}>
+              {t}
             </option>
           ))}
-          <option value={OTHER}>{OTHER}</option>
         </select>
       </div>
 
@@ -102,7 +96,7 @@ export function ContactForm() {
           name="uzenet"
           required
           rows={4}
-          placeholder="Írd le röviden, mire gondoltál — tervezett időpont, helyszín, hangulat."
+          placeholder="Tervezett időpont, helyszín, hangulat"
           className={`${field} mt-2 resize-none`}
         />
       </div>
@@ -110,18 +104,19 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="group relative inline-flex items-center justify-center gap-3 overflow-hidden border border-fg px-9 py-4 text-[0.68rem] font-light font-mono uppercase tracking-[0.28em] text-fg"
+          className="group inline-flex items-center gap-3 self-start font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg"
         >
-          <span className="absolute inset-0 -translate-x-full bg-fg transition-transform duration-500 ease-out group-hover:translate-x-0" />
-          <span className="relative flex items-center gap-3 transition-colors duration-500 group-hover:text-bg">
+          <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
             Üzenet küldése
-            <Send size={15} strokeWidth={1.25} />
+          </span>
+          <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
+            &rarr;
           </span>
         </button>
 
-        <p aria-live="polite" className="text-xs font-light leading-relaxed text-muted">
+        <p aria-live="polite" className="max-w-xs text-xs leading-relaxed text-muted">
           {sent
-            ? "Megnyitottuk a levelezőprogramod az előre kitöltött üzenettel. Ha nem nyílt meg, írj közvetlenül a lenti e-mail-címre."
+            ? "Megnyitottuk a levelezőprogramod az előre kitöltött üzenettel."
             : "A gomb a levelezőprogramodban nyit meg egy előre kitöltött üzenetet."}
         </p>
       </div>

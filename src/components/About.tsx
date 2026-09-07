@@ -1,77 +1,95 @@
 import { motion } from "framer-motion";
 import { site } from "../data/site";
-import { services } from "../data/services";
-import { scrollToSection } from "../lib/scroll";
+import { photos, photoSrc } from "../data/gallery";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * A szekció szándékosan csak ellenőrzött tényeket állít: a név, a tevékenység,
- * a város és a szolgáltatások listája. Bemutatkozó szöveget NEM találunk ki.
- *
- * Kép jelenleg nincs a szekcióban: Lilláról nincs fotónk. Ha ad egyet,
- * ide kerül — lásd a README-t.
+ * A szekció csak ellenőrzött tényeket állít. A négy pont a megrendelő által
+ * megadott szolgáltatás — nem kitalált stílusjegy. A személyes bemutatkozás
+ * helye jelölve van, azt Lillának kell megírnia.
  */
+const PONTOK = [
+  "Portré",
+  "Jegyes & páros",
+  "Kreatív szabadtéri",
+  "Karácsonyi & szezonális",
+];
+
+/** HELYŐRZŐ: Lilláról nincs fotónk, ezért az egyik munkája áll itt. */
+const HELYORZO_KEP = "portre-010";
+
 export function About() {
+  const kep = photos.find((p) => p.id === HELYORZO_KEP);
+
   return (
-    <section id="rolam" className="surface-inverse scroll-mt-20 bg-bg py-24 text-fg sm:py-32">
+    <section id="about" className="surface-inverse scroll-mt-20 bg-bg py-24 text-fg sm:py-32 lg:py-40">
       <div className="container-editorial">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease }}
-          className="max-w-3xl"
-        >
-          <p className="font-mono text-[0.6rem] font-light uppercase tracking-[0.38em] text-muted">
-            Rólam
-          </p>
-
-          <h2 className="mt-5 font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            {site.photographer}
-          </h2>
-
-          <p className="mt-8 text-lg font-light leading-relaxed text-strong sm:text-xl">
-            Fotográfus, {site.brand} néven dolgozom {site.region}en. Portré, jegyes
-            és páros, karácsonyi és szezonális, valamint kreatív szabadtéri
-            fotózást vállalok.
-          </p>
-
-          <ul className="mt-10 flex flex-wrap gap-2">
-            {services.map((service) => (
-              <li
-                key={service.id}
-                className="rounded-full border border-line px-4 py-2 font-mono text-[0.62rem] font-light uppercase tracking-[0.16em] text-strong"
-              >
-                {service.title}
-              </li>
-            ))}
-          </ul>
-
-          {/* HELYŐRZŐ — élesítés előtt Lilla saját szövegével kell kitölteni.
-              Szándékosan látható, hogy ne maradjon benne észrevétlenül. */}
-          <div className="mt-12 border-l-2 border-line py-1 pl-5">
-            <p className="font-mono text-[0.6rem] font-light uppercase tracking-[0.28em] text-muted">
-              Kitöltésre vár
-            </p>
-            <p className="mt-2 text-sm font-light leading-relaxed text-muted">
-              Ide Lilla saját bemutatkozása kerül — hogyan dolgozik, mi számít neki
-              egy fotózáson. Ezt a szöveget nem találjuk ki helyette. Ha ad magáról
-              fotót, az is ebbe a szekcióba kerül.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => scrollToSection("kapcsolat")}
-            className="group mt-12 inline-flex items-center gap-3 border-b border-fg pb-1 font-mono text-[0.68rem] font-light uppercase tracking-[0.28em] text-fg"
+        <div className="grid grid-cols-12 gap-x-5 gap-y-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, ease }}
+            className="col-span-12 lg:col-span-5"
           >
-            Írj nekem
-            <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
-              →
-            </span>
-          </button>
-        </motion.div>
+            {kep && (
+              <figure className="bg-raise" style={{ aspectRatio: "4 / 5" }}>
+                <img
+                  src={photoSrc(kep)}
+                  alt="Helyőrző kép — ide Varga Lilla saját portréja kerül"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </figure>
+            )}
+            <p className="mt-3 font-mono text-[0.55rem] uppercase tracking-[0.24em] text-muted">
+              Helyőrző — ide Lilla saját portréja kerül
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1, delay: 0.12, ease }}
+            className="col-span-12 lg:col-span-6 lg:col-start-7"
+          >
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">About</p>
+
+            <h2 className="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl lg:text-7xl">
+              {site.photographer}
+            </h2>
+
+            <p className="mt-6 font-display text-xl italic text-strong sm:text-2xl">
+              Photographer based in {site.region}.
+            </p>
+
+            {/* HELYŐRZŐ — Lilla saját szavaival kell kitölteni. */}
+            <div className="mt-10 border-l border-line pl-6">
+              <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
+                Kitöltésre vár
+              </p>
+              <p className="mt-3 max-w-md text-base leading-relaxed text-muted">
+                Ide Lilla rövid, személyes bemutatkozása kerül — hogyan dolgozik,
+                mi számít neki egy fotózáson. Ezt a szöveget nem találjuk ki
+                helyette.
+              </p>
+            </div>
+
+            <ul className="mt-12 divide-y divide-line border-y border-line">
+              {PONTOK.map((pont, i) => (
+                <li key={pont} className="flex items-baseline gap-6 py-4">
+                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-lg sm:text-xl">{pont}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

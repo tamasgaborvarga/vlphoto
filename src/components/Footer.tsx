@@ -1,79 +1,35 @@
-import { FacebookIcon, InstagramIcon } from "./SocialIcons";
-import { navLinks, site } from "../data/site";
-import { scrollToSection } from "../lib/scroll";
-import { Logo } from "./Logo";
+import { site } from "../data/site";
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="surface border-t border-line bg-bg py-14 sm:py-16">
-      <div className="container-editorial">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <Logo onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} />
-            <p className="mt-4 max-w-xs text-sm font-light leading-relaxed text-muted">
-              {site.tagline} — {site.region}
-            </p>
-          </div>
-
-          <nav aria-label="Lábléc navigáció">
-            <ul className="grid grid-cols-2 gap-x-10 gap-y-3 sm:flex sm:gap-10">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection(link.id)}
-                    className="text-[0.68rem] font-light font-mono uppercase tracking-[0.22em] text-muted transition-colors duration-300 hover:text-fg"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="space-y-3">
-            <a
-              href={site.phoneHref}
-              className="block text-sm font-light text-strong transition-colors hover:text-fg"
-            >
-              {site.phone}
-            </a>
-            <a
-              href={site.emailHref}
-              className="block text-sm font-light text-strong transition-colors hover:text-fg"
-            >
-              {site.email}
-            </a>
-            <div className="flex gap-4 pt-1">
-              <a
-                href={site.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="VL photo Instagram-oldala"
-                className="text-muted transition-colors duration-300 hover:text-fg"
-              >
-                <InstagramIcon size={19} strokeWidth={1.2} />
-              </a>
-              <a
-                href={site.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="VL photo Facebook-oldala"
-                className="text-muted transition-colors duration-300 hover:text-fg"
-              >
-                <FacebookIcon size={19} strokeWidth={1.2} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 border-t border-line pt-7">
-          <p className="text-[0.68rem] font-light tracking-wide text-muted">
-            © {year} VL photo — Varga Lilla
+    <footer className="surface border-t border-line bg-bg py-14">
+      <div className="container-editorial flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.34em] text-fg">VL photo</p>
+          <p className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-muted">
+            {site.region} &middot; Hungary
           </p>
         </div>
+
+        <div className="flex gap-7 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-muted">
+          <a
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors duration-500 hover:text-fg"
+          >
+            Instagram
+          </a>
+          <a href={site.emailHref} className="transition-colors duration-500 hover:text-fg">
+            Email
+          </a>
+        </div>
+      </div>
+
+      <div className="container-editorial mt-12 border-t border-line pt-6">
+        <p className="font-mono text-[0.55rem] uppercase tracking-[0.24em] text-muted">
+          &copy; {new Date().getFullYear()} VL photo &mdash; Varga Lilla
+        </p>
       </div>
     </footer>
   );
