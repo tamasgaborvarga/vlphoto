@@ -5,7 +5,9 @@
 export const site = {
   brand: "VL photo",
   photographer: "Varga Lilla",
-  tagline: "Varga Lilla Fotográfia",
+  tagline: "VL photo by Varga Lilla",
+  /** A hero-ban a márkanév alá kerülő sor — a H1 már kimondja a „VL photo"-t. */
+  heroLine: "by Varga Lilla",
   region: "Budapest",
   regionLong: "Budapest, Magyarország",
   phone: "+36 30 278 4540",

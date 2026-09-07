@@ -12,7 +12,8 @@
     "galeria": "node tools/scan-gallery.mjs",
     "deploy": "npm run build:single && node tools/make-deploy.mjs",
     "deploy:check": "vite preview --outDir deploy --port 4300 --strictPort --host 127.0.0.1",
-    "deploy:cf": "npm run deploy && npx wrangler pages deploy deploy --project-name vl-photo --branch main"
+    "deploy:cf": "npm run deploy && npx wrangler pages deploy deploy --project-name vl-photo --branch main",
+    "telon": "vite preview --outDir deploy --port 4400 --strictPort --host 0.0.0.0"
   },
   "dependencies": {
     "framer-motion": "^13.2.0",

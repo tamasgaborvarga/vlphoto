@@ -47,7 +47,7 @@ export function Hero() {
           transition={{ delay: 0.72, duration: 0.9, ease }}
           className="mt-4 font-display text-xl italic text-strong sm:text-2xl lg:text-3xl"
         >
-          {site.tagline}
+          {site.heroLine}
         </motion.p>
 
         <motion.div
