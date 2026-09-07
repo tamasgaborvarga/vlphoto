@@ -58,8 +58,8 @@ export function Hero() {
         >
           <div className="space-y-2">
             <p className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-fg">
-              Portrait <span className="text-muted">·</span> Couples{" "}
-              <span className="text-muted">·</span> Outdoor
+              Portré <span className="text-muted">&middot;</span> Páros{" "}
+              <span className="text-muted">&middot;</span> Szabadtéri
             </p>
             <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
               {site.regionLong}

@@ -2,9 +2,9 @@ import type { CategoryId } from "./gallery";
 
 export type Collection = {
   id: CategoryId;
-  /** Angol cím — az editorial hangvétel miatt. */
+  /** A blokk címe. */
   title: string;
-  /** Rövid, magyar alcím. Hangulati szöveg, nem tényállítás. */
+  /** Rövid alcím. Hangulati szöveg, nem tényállítás. */
   line: string;
   /** A blokkban megjelenő képek, kézzel válogatva (arányra is figyelve). */
   photos: string[];
@@ -17,19 +17,19 @@ export type Collection = {
 export const collections: Collection[] = [
   {
     id: "portre",
-    title: "Portrait",
+    title: "Portré",
     line: "Önmagad egy másik nézőpontból.",
     photos: ["portre-012", "portre-004", "portre-018", "portre-009"],
   },
   {
     id: "paros",
-    title: "Couples",
+    title: "Páros",
     line: "Képek arról, ami kettőtök között van.",
     photos: ["paros-024", "paros-013", "paros-002", "paros-016"],
   },
   {
     id: "kreativ",
-    title: "Outdoor",
+    title: "Szabadtéri",
     line: "Fény. Mozgás. Természetesség.",
     photos: ["kreativ-002", "kreativ-005", "kreativ-011", "kreativ-004"],
   },

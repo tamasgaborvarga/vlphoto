@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <p className="font-mono text-[0.72rem] uppercase tracking-[0.34em] text-fg">VL photo</p>
           <p className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.24em] text-muted">
-            {site.region} &middot; Hungary
+            {site.region} &middot; Magyarország
           </p>
         </div>
 
@@ -21,7 +21,7 @@ export function Footer() {
             Instagram
           </a>
           <a href={site.emailHref} className="transition-colors duration-500 hover:text-fg">
-            Email
+            E-mail
           </a>
         </div>
       </div>

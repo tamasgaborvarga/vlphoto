@@ -44,7 +44,7 @@ export function Archive({ filter, onFilterChange }: Props) {
           className="flex items-baseline justify-between border-b border-line pb-6"
         >
           <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.32em] text-fg">
-            Selected stories
+            Teljes anyag
           </h2>
           <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
             {shown.length} / {visible.length}

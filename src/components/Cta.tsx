@@ -15,7 +15,7 @@ export function Cta() {
         className="container-editorial text-center"
       >
         <h2 className="mx-auto max-w-4xl font-display text-4xl leading-[1.05] tracking-tight text-fg sm:text-6xl lg:text-7xl">
-          Let&rsquo;s create something beautiful.
+          Alkossunk együtt valami szépet.
         </h2>
 
         <p className="mx-auto mt-7 max-w-lg font-display text-lg italic text-strong sm:text-xl">

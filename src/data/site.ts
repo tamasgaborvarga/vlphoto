@@ -20,7 +20,7 @@ export type NavLink = { id: string; label: string };
 
 /** Szándékosan három pont — a rövid navigáció prémiumabb hatású. */
 export const navLinks: NavLink[] = [
-  { id: "work", label: "Work" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
+  { id: "work", label: "Munkáim" },
+  { id: "about", label: "Rólam" },
+  { id: "contact", label: "Kapcsolat" },
 ];

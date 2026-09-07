@@ -56,14 +56,14 @@ export function About() {
             transition={{ duration: 1, delay: 0.12, ease }}
             className="col-span-12 lg:col-span-6 lg:col-start-7"
           >
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">About</p>
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">Rólam</p>
 
             <h2 className="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl lg:text-7xl">
               {site.photographer}
             </h2>
 
             <p className="mt-6 font-display text-xl italic text-strong sm:text-2xl">
-              Photographer based in {site.region}.
+              Fotográfus, {site.region}en.
             </p>
 
             {/* HELYŐRZŐ — Lilla saját szavaival kell kitölteni. */}

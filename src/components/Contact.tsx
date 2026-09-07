@@ -19,7 +19,7 @@ export function Contact() {
           transition={{ duration: 0.9, ease }}
           className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted"
         >
-          Contact
+          Kapcsolat
         </motion.p>
 
         <div className="mt-10 grid grid-cols-12 gap-x-5 gap-y-14">

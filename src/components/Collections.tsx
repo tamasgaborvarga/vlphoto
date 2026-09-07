@@ -54,7 +54,7 @@ export function Collections({ onOpenCategory }: Props) {
                 className="group mt-8 inline-flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0"
               >
                 <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
-                  View {collection.title.toLowerCase()}
+                  Összes {collection.title.toLowerCase()} kép
                 </span>
                 <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
                   →
