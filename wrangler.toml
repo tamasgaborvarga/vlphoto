@@ -1,0 +1,17 @@
+# Cloudflare Workers (static assets) — ha nem Pages-re, hanem Workers-re töltesz fel.
+#
+#   npm run deploy          # elkészíti a deploy/ mappát
+#   npx wrangler deploy     # feltölti Workers-re
+#
+# A workers_dev = true adja a <name>.<fiókod>.workers.dev címet.
+# Enélkül a telepítés lefut, de "No URLs enabled" üzenettel — nincs hova menni.
+#
+# Pages-re (drag & drop vagy `npm run deploy:cf`) erre a fájlra nincs szükség.
+
+name = "vl-photo"
+compatibility_date = "2026-09-07"
+workers_dev = true
+
+[assets]
+directory = "./deploy"
+not_found_handling = "single-page-application"

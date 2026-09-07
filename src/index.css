@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   VL photo — design tokenek
+
+   Az arculat kizárólag sötét alapú (nincs világos mód).
+
+   FELÜLETEK: egy szekció a .surface vagy .surface-inverse osztálytól kapja
+   a szín-készletét, a gyerekek pedig már csak a `bg-bg`, `text-fg`,
+   `text-muted`, `border-line` osztályokat használják. Így a váltakozó
+   fekete-fehér sávok egy helyen vannak definiálva.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-display: "EB Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "EB Garamond", ui-serif, Georgia, serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Felülettől függő színek. Az itteni értékek csak alapértelmezések —
+     a tényleges színt a .surface / .surface-inverse osztály állítja be
+     magán az elemen, és onnan öröklődik lefelé. */
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-muted: #8a8a8a;
+  --color-strong: #e5e5e5;
+  --color-line: #1c1c1c;
+  --color-raise: #0d0d0d;
+
+  /* Fix színek — ott, ahol témától függetlenül kell (hero fátyol, lightbox) */
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+
+  --tracking-brand: 0.32em;
+}
+
+/* ---------- 1) ALAPSZÍNEK ---------- */
+
+/* Az oldal kizárólag sötét. Világos téma nincs — a váltakozó ritmust
+   a .surface / .surface-inverse adja. */
+:root {
+  color-scheme: dark;
+
+  --base-bg: #000000;
+  --base-fg: #ffffff;
+  --base-muted: #8a8a8a;
+  --base-strong: #e5e5e5;
+  --base-line: #1c1c1c;
+  --base-raise: #0d0d0d;
+
+  --inv-bg: #ffffff;
+  --inv-fg: #000000;
+  --inv-muted: #8a8a8a;
+  --inv-strong: #4a4a4a;
+  --inv-line: #e5e5e5;
+  --inv-raise: #f5f5f5;
+}
+
+
+/* ---------- 2) FELÜLETEK ---------- */
+@layer components {
+  .surface {
+    --color-bg: var(--base-bg);
+    --color-fg: var(--base-fg);
+    --color-muted: var(--base-muted);
+    --color-strong: var(--base-strong);
+    --color-line: var(--base-line);
+    --color-raise: var(--base-raise);
+  }
+
+  /* Fordított sáv — a váltakozó szekció-ritmushoz */
+  .surface-inverse {
+    --color-bg: var(--inv-bg);
+    --color-fg: var(--inv-fg);
+    --color-muted: var(--inv-muted);
+    --color-strong: var(--inv-strong);
+    --color-line: var(--inv-line);
+    --color-raise: var(--inv-raise);
+  }
+
+  /* Mindig sötét (hero, lightbox) — a fotók miatt */
+  .surface-fixed-dark {
+    --color-bg: #000000;
+    --color-fg: #ffffff;
+    --color-muted: #8a8a8a;
+    --color-strong: #e5e5e5;
+    --color-line: #1c1c1c;
+    --color-raise: #0d0d0d;
+  }
+
+  .container-editorial {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 84rem;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container-editorial {
+      padding-inline: 3rem;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    /* a body maga is felület, hogy a téma alapszíne érvényesüljön */
+    --color-bg: var(--base-bg);
+    --color-fg: var(--base-fg);
+    --color-muted: var(--base-muted);
+    --color-strong: var(--base-strong);
+    --color-line: var(--base-line);
+    --color-raise: var(--base-raise);
+
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  /* A fotók SZÍNESEK maradnak — a monokróm arculat csak a felületre
+     (tipográfia, keretek, gombok) vonatkozik, a képekre nem. */
+
+  ::selection {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+}
+
+@media (min-width: 1024px) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
