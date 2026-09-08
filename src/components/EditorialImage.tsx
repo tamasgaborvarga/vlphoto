@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { photoSrc, type Photo } from "../data/gallery";
 
 type Props = {
@@ -14,12 +13,12 @@ type Props = {
   cover?: boolean;
 };
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 /**
- * Egyetlen kép. A felfedés maszkos: a keret alulról nyílik ki, a kép pedig
- * közben alig érezhetően visszaáll 1-es méretre. Ez adja azt a lassú,
- * „drága" hatást, amit egy sima elhalványulás nem.
+ * Egyetlen kép.
+ *
+ * SZÁNDÉKOSAN NINCS görgetésre induló animáció: 77 képnél a folyamatos
+ * beúszás zavaró lett. Csak annyi történik, hogy a kép betöltéskor
+ * halkan megjelenik — ez a lusta betöltés miatt amúgy is kell.
  */
 export function EditorialImage({
   photo,
@@ -32,16 +31,12 @@ export function EditorialImage({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <motion.figure
-      initial={{ clipPath: "inset(22% 0% 0% 0%)", opacity: 0 }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
-      viewport={{ once: true, margin: "-70px" }}
-      transition={{ duration: 1.4, ease }}
+    <figure
       className={`group relative overflow-hidden bg-raise ${onOpen ? "cursor-zoom-in" : ""} ${className}`}
-      style={cover ? undefined : { aspectRatio: ` / ` }}
+      style={cover ? undefined : { aspectRatio: `${photo.width} / ${photo.height}` }}
       onClick={onOpen}
     >
-      <motion.img
+      <img
         src={photoSrc(photo)}
         alt={photo.alt}
         width={photo.width}
@@ -49,15 +44,16 @@ export function EditorialImage({
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         sizes={sizes}
+        ref={(el) => {
+          // Gyorsítótárból érkező kép esetén az onLoad már lefuthatott,
+          // mire a React csatlakozik — így nem maradhat láthatatlanul.
+          if (el?.complete) setLoaded(true);
+        }}
         onLoad={() => setLoaded(true)}
-        initial={{ scale: 1.07 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: "-70px" }}
-        transition={{ duration: 1.6, ease }}
-        className={`h-full w-full object-cover transition-[opacity,transform] duration-[1200ms] ease-out group-hover:scale-[1.02] ${
+        className={`h-full w-full object-cover transition-[opacity,transform] duration-500 ease-out group-hover:scale-[1.02] ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
       />
-    </motion.figure>
+    </figure>
   );
 }
