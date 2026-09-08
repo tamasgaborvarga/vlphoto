@@ -11,8 +11,10 @@ type Props = { onOpenCategory: (id: CategoryId) => void };
 
 /**
  * A három fő irány külön blokkban. A látogató itt nem galériát böngész,
- * hanem szolgáltatást választ — ezért van mindegyik alatt egy kivezetés
- * a teljes anyaghoz.
+ * hanem szolgáltatást választ.
+ *
+ * Minden blokk első képe TELJES SZÉLESSÉGŰ — kitör a konténerből a képernyő
+ * széléig. Ez adja a magazinos ritmust; a maradék három kép a rácsban marad.
  */
 export function Collections({ onOpenCategory }: Props) {
   const [open, setOpen] = useState<{ list: typeof photos; index: number } | null>(null);
@@ -24,65 +26,79 @@ export function Collections({ onOpenCategory }: Props) {
           .map((id) => photos.find((p) => p.id === id))
           .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
+        const [first, ...rest] = list;
+
         return (
-          <div
-            key={collection.id}
-            className={`container-editorial pt-16 sm:pt-20 lg:pt-24 `}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease }}
-              className="lg:flex lg:items-end lg:justify-between"
-            >
-              <div>
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">
-                  {String(ci + 1).padStart(2, "0")}
-                </p>
-                <h2 className="mt-4 font-display text-5xl leading-none tracking-tight text-fg sm:text-6xl lg:text-7xl">
-                  {collection.title}
-                </h2>
-                <p className="mt-5 max-w-md font-display text-lg text-strong sm:text-xl">
-                  {collection.line}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => onOpenCategory(collection.id)}
-                className="group mt-8 inline-flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0"
+          <div key={collection.id} className={ci > 0 ? "mt-24 sm:mt-32 lg:mt-40" : ""}>
+            <div className="container-editorial">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.9, ease }}
+                className="border-t border-line pt-14 lg:flex lg:items-end lg:justify-between"
               >
-                <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
-                  Összes {collection.title.toLowerCase()} kép
-                </span>
-                <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
-                  →
-                </span>
-              </button>
-            </motion.div>
+                <div>
+                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">
+                    {String(ci + 1).padStart(2, "0")}
+                  </p>
+                  <h2 className="mt-4 font-display text-5xl leading-none tracking-tight text-fg sm:text-6xl lg:text-7xl">
+                    {collection.title}
+                  </h2>
+                  <p className="mt-5 max-w-md font-display text-lg text-strong sm:text-xl">
+                    {collection.line}
+                  </p>
+                </div>
 
-            {/* Négy kép: egy nagyobb + három kísérő */}
-            <div className="mt-10 grid grid-cols-12 gap-4 sm:mt-14 sm:gap-5">
-              {list.map((photo, i) => (
-                <div
-                  key={photo.id}
-                  className={
-                    i === 0
-                      ? "col-span-12 lg:col-span-7"
-                      : i === 1
-                        ? "col-span-12 sm:col-span-6 lg:col-span-5"
-                        : "col-span-6 lg:col-span-6"
-                  }
+                <button
+                  type="button"
+                  onClick={() => onOpenCategory(collection.id)}
+                  className="group mt-8 inline-flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0"
                 >
+                  <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
+                    Összes {collection.title.toLowerCase()} kép
+                  </span>
+                  <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
+                    &rarr;
+                  </span>
+                </button>
+              </motion.div>
+            </div>
+
+            {/* Teljes szélességű nyitókép */}
+            {first && (
+              <div className="mt-12 sm:mt-16">
+                <div className="full-bleed">
                   <EditorialImage
-                    photo={photo}
-                    onOpen={() => setOpen({ list, index: i })}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    photo={first}
+                    cover
+                    className="h-[58vh] sm:h-[72vh] lg:h-[82vh]"
+                    priority={ci === 0}
+                    onOpen={() => setOpen({ list, index: 0 })}
+                    sizes="100vw"
                   />
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
+
+            {rest.length > 0 && (
+              <div className="container-editorial">
+                <div className="mt-5 grid grid-cols-12 gap-4 sm:gap-5">
+                  {rest.map((photo, i) => (
+                    <div
+                      key={photo.id}
+                      className={i === 0 ? "col-span-12 sm:col-span-7" : "col-span-12 sm:col-span-5"}
+                    >
+                      <EditorialImage
+                        photo={photo}
+                        onOpen={() => setOpen({ list, index: i + 1 })}
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         );
       })}

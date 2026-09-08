@@ -23,6 +23,10 @@ OUT_FULL = os.path.join(OUT, "nagy")
 # Nem fotók: logó és reklámgrafika
 KIHAGY = {34, 40, 132, 137, 138, 168}
 
+# Jelmezes / szürreális sorozat — a user kérésére kimarad (171: maszkos-rojtos,
+# 173: gombaszobor). Nem illik a többi kép vizuális nyelvéhez.
+JELMEZES = {169, 170, 171, 172, 173, 174}
+
 # VÁLOGATÁS — csak ezek kerülnek a weboldalra.
 # Szempontok: egy sorozatból max 2-3 kép, kollázs (több fotó egy fájlban) ki,
 # változatos helyszín és fény, minden kategória képviselve.
@@ -74,13 +78,15 @@ for fajl in sorted(os.listdir(SRC)):
     if not fajl.lower().endswith(".jpg"):
         continue
     n = int(fajl[3:6])
-    if n in KIHAGY:
+    if n in KIHAGY or n in JELMEZES:
         continue
     if KIVALASZTOTT is not None and n not in KIVALASZTOTT:
         continue
     kat = kategoria(n)
+    # A fájlnév a FORRÁS sorszámát viszi tovább — így egy kép kivétele nem
+    # rendezi át a többit, és a hivatkozások (kiemelt, collections) stabilak.
     szamlalo[kat] = szamlalo.get(kat, 0) + 1
-    nev = "%s-%03d.webp" % (kat, szamlalo[kat])
+    nev = "%s-%03d.webp" % (kat, n)
 
     im = Image.open(os.path.join(SRC, fajl))
     im = ImageOps.exif_transpose(im).convert("RGB")

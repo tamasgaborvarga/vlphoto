@@ -22,13 +22,15 @@ Utolsó ellenőrzés: 2026-09-07.
 
 ### A galéria képei
 
-**79 kép, mind Varga Lilla valódi munkája**, a VL photo Facebook-oldaláról
+**77 kép, mind Varga Lilla valódi munkája**, a VL photo Facebook-oldaláról
 (bejelentkezett munkamenetből letöltve, 2026-09-07). Nincs helyőrző, nincs
 stockfotó az oldalon.
 
-Besorolás: Páros & Jegyes 30 · Portré 27 · Kreatív szabadtéri 12 · Szezonális 10.
+Besorolás: Páros & Jegyes 30 · Portré 26 · Kreatív szabadtéri 11 · Szezonális 10.
 
-**A 251 letöltött képből 79 került ki válogatással.** Szempontok: egy sorozatból
+**A 251 letöltött képből 77 került ki válogatással.** A jelmezes / szürreális
+sorozat (169–174) a megrendelő kérésére kimaradt: nem illett a többi kép
+vizuális nyelvéhez. Szempontok: egy sorozatból
 legfeljebb 2-3 kép, kollázsok (több fotó egy fájlban) kihagyva, változatos
 helyszín és fényviszony, minden kategória képviselve. A válogatás listája a
 `tools/import-fotok.py` `KIVALASZTOTT` halmazában van, sorszám szerint —

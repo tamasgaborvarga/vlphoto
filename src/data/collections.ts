@@ -19,19 +19,19 @@ export const collections: Collection[] = [
     id: "portre",
     title: "Portré",
     line: "Önmagad egy másik nézőpontból.",
-    photos: ["portre-012", "portre-004", "portre-018", "portre-009"],
+    photos: ["portre-030", "portre-245", "portre-198", "portre-242"],
   },
   {
     id: "paros",
     title: "Páros",
     line: "Képek arról, ami kettőtök között van.",
-    photos: ["paros-024", "paros-013", "paros-002", "paros-022"],
+    photos: ["paros-209", "paros-179", "paros-081", "paros-211"],
   },
   {
     id: "kreativ",
     title: "Szabadtéri",
     line: "Fény. Mozgás. Természetesség.",
-    photos: ["kreativ-002", "kreativ-005", "kreativ-011", "kreativ-004"],
+    photos: ["kreativ-066", "kreativ-062", "kreativ-118", "kreativ-063"],
   },
 ];
 
@@ -41,16 +41,16 @@ export const collections: Collection[] = [
  * külön „válogatott" szekcióra lenne szükség.
  */
 export const kiemelt: string[] = [
-  "paros-012",
-  "portre-021",
-  "kreativ-005",
-  "paros-024",
-  "szezonalis-004",
-  "portre-012",
-  "kreativ-011",
-  "portre-004",
-  "paros-013",
-  "portre-018",
-  "kreativ-002",
-  "paros-002",
+  "paros-108",
+  "portre-245",
+  "kreativ-066",
+  "paros-209",
+  "szezonalis-124",
+  "portre-030",
+  "kreativ-062",
+  "portre-198",
+  "paros-179",
+  "portre-242",
+  "kreativ-118",
+  "paros-081",
 ];

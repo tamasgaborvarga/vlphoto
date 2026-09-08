@@ -53,7 +53,7 @@ src/
 
 ## Több kép hozzáadása
 
-A galériában **79 válogatott kép** van (a letöltött 251-ből), a VL photo
+A galériában **77 válogatott kép** van (a letöltött 251-ből), a VL photo
 Facebook-oldaláról. A válogatás a `tools/import-fotok.py` `KIVALASZTOTT`
 halmazában szerkeszthető.
 A nyers, letöltött fájlok a `fotok-nyers/` mappában vannak (257 db).
@@ -67,6 +67,10 @@ npm run galeria            # a képlista újragenerálása
 
 A kategóriákat a `tools/import-fotok.py` fájl elején lévő listák adják
 (sorszám szerint) — ott lehet átsorolni képeket.
+
+A fájlnevek a FORRÁS sorszámát viszik tovább (`portre-104.webp` ← `vl-104.jpg`),
+ezért egy kép kivétele nem rendezi át a többit — a `collections.ts`
+hivatkozásai stabilak maradnak.
 
 **Új képek betöltése három lépés:**
 

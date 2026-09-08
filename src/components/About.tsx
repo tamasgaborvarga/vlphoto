@@ -17,7 +17,7 @@ const PONTOK = [
 ];
 
 /** HELYŐRZŐ: Lilláról nincs fotónk, ezért az egyik munkája áll itt. */
-const HELYORZO_KEP = "portre-010";
+const HELYORZO_KEP = "portre-091";
 
 export function About() {
   const kep = photos.find((p) => p.id === HELYORZO_KEP);
