@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MotionConfig } from "framer-motion";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { SelectedWork } from "./components/SelectedWork";
 import { Collections } from "./components/Collections";
 import { About } from "./components/About";
 import { Archive } from "./components/Archive";
@@ -28,7 +27,6 @@ export default function App() {
         <Header />
         <main>
           <Hero />
-          <SelectedWork />
           <Collections onOpenCategory={openCategory} />
           <About />
           <Archive filter={filter} onFilterChange={setFilter} />

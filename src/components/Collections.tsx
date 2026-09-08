@@ -18,7 +18,7 @@ export function Collections({ onOpenCategory }: Props) {
   const [open, setOpen] = useState<{ list: typeof photos; index: number } | null>(null);
 
   return (
-    <section className="surface bg-bg pb-24 sm:pb-32">
+    <section id="work" className="surface scroll-mt-20 bg-bg pb-24 pt-24 sm:pb-32 sm:pt-32">
       {collections.map((collection, ci) => {
         const list = collection.photos
           .map((id) => photos.find((p) => p.id === id))
@@ -27,7 +27,7 @@ export function Collections({ onOpenCategory }: Props) {
         return (
           <div
             key={collection.id}
-            className="container-editorial border-t border-line pt-16 sm:pt-20 lg:pt-24"
+            className={`container-editorial pt-16 sm:pt-20 lg:pt-24 `}
           >
             <motion.div
               initial={{ opacity: 0, y: 24 }}

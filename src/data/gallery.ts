@@ -12,6 +12,7 @@
  * -------------------------------------------------------------------------
  */
 import { generatedPhotos } from "./photos.generated";
+import { kiemelt } from "./collections";
 
 export type CategoryId = "portre" | "paros" | "szezonalis" | "kreativ";
 
@@ -39,7 +40,17 @@ const CATEGORY_LABELS: Record<CategoryId, string> = {
 /** A kategóriák megjelenítési sorrendje. */
 const CATEGORY_ORDER: CategoryId[] = ["portre", "paros", "szezonalis", "kreativ"];
 
-export const photos: Photo[] = generatedPhotos;
+/**
+ * A megjelenítési sorrend: előbb a kiemelt képek (a `collections.ts`-ben
+ * megadott sorrendben), utánuk a többi. Így nem kell külön „válogatott"
+ * szekció — a teljes anyag eleje maga a válogatás.
+ */
+export const photos: Photo[] = [
+  ...kiemelt
+    .map((id) => generatedPhotos.find((p) => p.id === id))
+    .filter((p): p is Photo => Boolean(p)),
+  ...generatedPhotos.filter((p) => !kiemelt.includes(p.id)),
+];
 
 /**
  * Csak azok a szűrők jelennek meg, amelyekhez ténylegesen van kép — így

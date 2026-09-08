@@ -12,7 +12,7 @@ export type Collection = {
 
 /**
  * A három fő irány. A negyedik kategória (szezonális) nem kap saját blokkot,
- * de a teljes galériában szűrhető marad.
+ * de a teljes anyagban szűrhető marad.
  */
 export const collections: Collection[] = [
   {
@@ -25,7 +25,7 @@ export const collections: Collection[] = [
     id: "paros",
     title: "Páros",
     line: "Képek arról, ami kettőtök között van.",
-    photos: ["paros-024", "paros-013", "paros-002", "paros-016"],
+    photos: ["paros-024", "paros-013", "paros-002", "paros-022"],
   },
   {
     id: "kreativ",
@@ -36,19 +36,21 @@ export const collections: Collection[] = [
 ];
 
 /**
- * A nyitó, editorial elrendezésű válogatás. A `span` a rácsban elfoglalt
- * helyet adja meg — ettől lesz változó képméretű, magazinszerű a szekció.
+ * A teljes anyag sorrendje: ezek a képek kerülnek előre, a többi utánuk jön.
+ * Így a látogató a legerősebb munkákkal találkozik először, anélkül hogy
+ * külön „válogatott" szekcióra lenne szükség.
  */
-export type WorkItem = { id: string; span: "full" | "wide" | "half" | "narrow" };
-
-export const selectedWork: WorkItem[] = [
-  { id: "paros-024", span: "narrow" },
-  { id: "paros-012", span: "wide" },
-  { id: "portre-016", span: "half" },
-  { id: "kreativ-005", span: "half" },
-  { id: "paros-022", span: "full" },
-  { id: "portre-012", span: "narrow" },
-  { id: "szezonalis-004", span: "wide" },
-  { id: "kreativ-011", span: "half" },
-  { id: "portre-004", span: "half" },
+export const kiemelt: string[] = [
+  "paros-012",
+  "portre-021",
+  "kreativ-005",
+  "paros-024",
+  "szezonalis-004",
+  "portre-012",
+  "kreativ-011",
+  "portre-004",
+  "paros-013",
+  "portre-018",
+  "kreativ-002",
+  "paros-002",
 ];
