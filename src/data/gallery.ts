@@ -55,10 +55,10 @@ export const categories: Category[] = [
 
 /** A hero teljes szélességű háttérképe. */
 export const heroImage = {
-  src: "galeria/nagy/paros-019.webp",
+  src: "galeria/nagy/paros-016.webp",
   alt: "",
   width: 1600,
-  height: 1067,
+  height: 1066,
 };
 
 /**
