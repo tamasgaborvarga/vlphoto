@@ -13,8 +13,11 @@ type Props = { onOpenCategory: (id: CategoryId) => void };
  * A három fő irány külön blokkban. A látogató itt nem galériát böngész,
  * hanem szolgáltatást választ.
  *
- * Minden blokk első képe TELJES SZÉLESSÉGŰ — kitör a konténerből a képernyő
- * széléig. Ez adja a magazinos ritmust; a maradék három kép a rácsban marad.
+ * MOBIL és ASZTALI elrendezés szándékosan KÜLÖNBÖZIK:
+ *  - mobilon minden kép teljes szélességű, egymás alatt, a saját arányával —
+ *    így nagyok és nem marad üres sáv mellettük;
+ *  - asztali gépen egy nagy nyitókép, alatta azonos magasságú képsor.
+ * Egyik esetben sincs vágás.
  */
 export function Collections({ onOpenCategory }: Props) {
   const [open, setOpen] = useState<{ list: typeof photos; index: number } | null>(null);
@@ -65,40 +68,51 @@ export function Collections({ onOpenCategory }: Props) {
               </motion.div>
             </div>
 
-            {/* Nyitókép: nagy, de arányosan korlátozott — nincs vágás. */}
-            {first && (
-              <div className="container-editorial mt-12 sm:mt-16">
-                <div className="flex justify-center">
-                  <EditorialImage
-                    photo={first}
-                    heightClass="h-[46vh] sm:h-[56vh] lg:h-[64vh]"
-                    priority={ci === 0}
-                    onOpen={() => setOpen({ list, index: 0 })}
-                    sizes="(min-width: 1024px) 90vw, 100vw"
-                  />
-                </div>
-              </div>
-            )}
+            {/* MOBIL: teljes szélességű képek egymás alatt, saját aránnyal */}
+            <div className="container-editorial mt-10 space-y-4 sm:hidden">
+              {list.map((photo, i) => (
+                <EditorialImage
+                  key={photo.id}
+                  photo={photo}
+                  priority={ci === 0 && i === 0}
+                  onOpen={() => setOpen({ list, index: i })}
+                  sizes="100vw"
+                />
+              ))}
+            </div>
 
-            {rest.length > 0 && (
-              <div className="container-editorial">
-                {/* Kísérő sor: egységes magasságú képek, hogy asztali gépen
-                    ne nyúljanak túl nagyra és egy vonalban álljanak. */}
-                {/* Kísérő sor: azonos MAGASSÁG, a szélesség a képarányból jön.
-                    Így egy vonalban állnak, és egyik sincs levágva. */}
-                <div className="mt-6 flex flex-wrap items-start justify-center gap-4 sm:mt-8 sm:gap-5">
-                  {rest.map((photo, i) => (
+            {/* ASZTALI: nagy nyitókép, alatta azonos magasságú képsor */}
+            <div className="hidden sm:block">
+              {first && (
+                <div className="container-editorial mt-16">
+                  <div className="flex justify-center">
                     <EditorialImage
-                      key={photo.id}
-                      photo={photo}
-                      heightClass="h-[26vh] sm:h-[30vh] lg:h-[34vh]"
-                      onOpen={() => setOpen({ list, index: i + 1 })}
-                      sizes="(min-width: 640px) 33vw, 100vw"
+                      photo={first}
+                      heightClass="h-[56vh] lg:h-[64vh]"
+                      priority={ci === 0}
+                      onOpen={() => setOpen({ list, index: 0 })}
+                      sizes="90vw"
                     />
-                  ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
+              {rest.length > 0 && (
+                <div className="container-editorial">
+                  <div className="mt-8 flex flex-wrap items-start justify-center gap-5">
+                    {rest.map((photo, i) => (
+                      <EditorialImage
+                        key={photo.id}
+                        photo={photo}
+                        heightClass="h-[30vh] lg:h-[34vh]"
+                        onOpen={() => setOpen({ list, index: i + 1 })}
+                        sizes="33vw"
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         );
       })}

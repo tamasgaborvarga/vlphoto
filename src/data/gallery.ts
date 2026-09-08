@@ -64,7 +64,11 @@ export const categories: Category[] = [
   })),
 ];
 
-/** A hero teljes szélességű háttérképe. */
+/**
+ * A hero háttérképe. Külön, nagyobb felbontású fájl (2048 px), mert ez az
+ * egyetlen kép, amit teljes képernyőn látunk.
+ * Forrás: paros-158 — újragenerálás: lásd README, `public/hero.webp`.
+ */
 export const heroImage = {
   src: "hero.webp",
   alt: "",
