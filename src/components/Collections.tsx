@@ -72,7 +72,7 @@ export function Collections({ onOpenCategory }: Props) {
                   <EditorialImage
                     photo={first}
                     cover
-                    className="h-[58vh] sm:h-[72vh] lg:h-[82vh]"
+                    className="h-[42vh] sm:h-[52vh] lg:h-[58vh]"
                     priority={ci === 0}
                     onOpen={() => setOpen({ list, index: 0 })}
                     sizes="100vw"
@@ -83,18 +83,18 @@ export function Collections({ onOpenCategory }: Props) {
 
             {rest.length > 0 && (
               <div className="container-editorial">
-                <div className="mt-5 grid grid-cols-12 gap-4 sm:gap-5">
+                {/* Kísérő sor: egységes magasságú képek, hogy asztali gépen
+                    ne nyúljanak túl nagyra és egy vonalban álljanak. */}
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
                   {rest.map((photo, i) => (
-                    <div
+                    <EditorialImage
                       key={photo.id}
-                      className={i === 0 ? "col-span-12 sm:col-span-7" : "col-span-12 sm:col-span-5"}
-                    >
-                      <EditorialImage
-                        photo={photo}
-                        onOpen={() => setOpen({ list, index: i + 1 })}
-                        sizes="(min-width: 640px) 50vw, 100vw"
-                      />
-                    </div>
+                      photo={photo}
+                      cover
+                      className="h-[34vh] sm:h-[30vh] lg:h-[34vh]"
+                      onOpen={() => setOpen({ list, index: i + 1 })}
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                    />
                   ))}
                 </div>
               </div>
