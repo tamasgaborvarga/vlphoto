@@ -65,17 +65,16 @@ export function Collections({ onOpenCategory }: Props) {
               </motion.div>
             </div>
 
-            {/* Teljes szélességű nyitókép */}
+            {/* Nyitókép: nagy, de arányosan korlátozott — nincs vágás. */}
             {first && (
-              <div className="mt-12 sm:mt-16">
-                <div className="full-bleed">
+              <div className="container-editorial mt-12 sm:mt-16">
+                <div className="flex justify-center">
                   <EditorialImage
                     photo={first}
-                    cover
-                    className="h-[42vh] sm:h-[52vh] lg:h-[58vh]"
+                    heightClass="h-[46vh] sm:h-[56vh] lg:h-[64vh]"
                     priority={ci === 0}
                     onOpen={() => setOpen({ list, index: 0 })}
-                    sizes="100vw"
+                    sizes="(min-width: 1024px) 90vw, 100vw"
                   />
                 </div>
               </div>
@@ -85,13 +84,14 @@ export function Collections({ onOpenCategory }: Props) {
               <div className="container-editorial">
                 {/* Kísérő sor: egységes magasságú képek, hogy asztali gépen
                     ne nyúljanak túl nagyra és egy vonalban álljanak. */}
-                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
+                {/* Kísérő sor: azonos MAGASSÁG, a szélesség a képarányból jön.
+                    Így egy vonalban állnak, és egyik sincs levágva. */}
+                <div className="mt-6 flex flex-wrap items-start justify-center gap-4 sm:mt-8 sm:gap-5">
                   {rest.map((photo, i) => (
                     <EditorialImage
                       key={photo.id}
                       photo={photo}
-                      cover
-                      className="h-[34vh] sm:h-[30vh] lg:h-[34vh]"
+                      heightClass="h-[26vh] sm:h-[30vh] lg:h-[34vh]"
                       onOpen={() => setOpen({ list, index: i + 1 })}
                       sizes="(min-width: 640px) 33vw, 100vw"
                     />

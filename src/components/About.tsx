@@ -34,13 +34,13 @@ export function About() {
             className="col-span-12 lg:col-span-5"
           >
             {kep && (
-              <figure className="bg-raise" style={{ aspectRatio: "4 / 5" }}>
+              <figure className="bg-raise" style={{ aspectRatio: `${kep.width} / ${kep.height}` }}>
                 <img
                   src={photoSrc(kep)}
                   alt="Helyőrző kép — ide Varga Lilla saját portréja kerül"
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </figure>
             )}

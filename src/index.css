@@ -86,13 +86,6 @@
     --color-raise: #0d0d0d;
   }
 
-  /* Teljes szélességű képmomentum: kitör a konténerből a képernyő széléig. */
-  .full-bleed {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
-
   .container-editorial {
     width: 100%;
     margin-inline: auto;
