@@ -1,6 +1,22 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
+   ZT Nature — helyben tárolt betű (nincs a Google Fontson).
+   A fájlt a public/fonts/ mappába kell tenni ezen a néven:
+       ZTNature.woff2   (ha csak .ttf van, az is jó: ZTNature.ttf)
+   Amíg nincs meg, a böngésző csendben a rendszer sans betűjére esik vissza.
+   ------------------------------------------------------------------ */
+@font-face {
+  font-family: "ZT Nature";
+  src:
+    url("/fonts/ZTNature.woff2") format("woff2"),
+    url("/fonts/ZTNature.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------
    VL photo — design tokenek
 
    Az arculat kizárólag sötét alapú (nincs világos mód).
