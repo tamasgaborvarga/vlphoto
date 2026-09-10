@@ -78,14 +78,15 @@ export function Hero() {
             <span className="text-muted">&middot;</span> Szabadtéri
           </p>
 
+          {/* A megkeresés az oldal fő üzleti célja, ezért a gomb kap keretet és
+              felületet — így súlyosabb, mint a mellette lévő felsorolás.
+              Nem harsány: vékony keret, kitöltés csak hoverre. */}
           <button
             type="button"
             onClick={() => scrollToSection("contact")}
-            className="group -my-3 inline-flex min-h-11 items-center gap-3 self-start py-3 font-mono text-label uppercase tracking-[0.28em] text-fg sm:self-auto"
+            className="group inline-flex min-h-11 items-center gap-3 self-start border border-fg/35 px-7 py-4 font-mono text-label uppercase tracking-[0.28em] text-fg transition-colors duration-500 hover:border-fg hover:bg-fg hover:text-bg sm:self-auto"
           >
-            <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
-              Foglalj fotózást
-            </span>
+            Foglalj fotózást
             <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
               &rarr;
             </span>
