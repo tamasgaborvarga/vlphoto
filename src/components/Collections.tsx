@@ -14,10 +14,10 @@ type Props = { onOpenCategory: (id: CategoryId) => void };
  * hanem szolgáltatást választ.
  *
  * MOBIL és ASZTALI elrendezés szándékosan KÜLÖNBÖZIK:
- *  - mobilon minden kép teljes szélességű, egymás alatt, a saját arányával —
- *    így nagyok és nem marad üres sáv mellettük;
- *  - asztali gépen egy nagy nyitókép, alatta azonos magasságú képsor.
- * Egyik esetben sincs vágás.
+ *  - mobilon minden kép teljes szélességű, egymás alatt, a saját arányával;
+ *  - asztali gépen szabálytalan, 12 oszlopos rács, blokkonként más mintával
+ *    (a minta a collections.ts `layout` mezőjében van).
+ * Egyik esetben sincs vágás: minden kép a saját arányát tartja.
  */
 export function Collections({ onOpenCategory }: Props) {
   const [open, setOpen] = useState<{ list: typeof photos; index: number } | null>(null);
@@ -29,10 +29,8 @@ export function Collections({ onOpenCategory }: Props) {
           .map((id) => photos.find((p) => p.id === id))
           .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
-        const [first, ...rest] = list;
-
         return (
-          <div key={collection.id} className={ci > 0 ? "mt-24 sm:mt-32 lg:mt-40" : ""}>
+          <div key={collection.id} className={ci > 0 ? "mt-28 sm:mt-36 lg:mt-48" : ""}>
             <div className="container-editorial">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
@@ -68,7 +66,7 @@ export function Collections({ onOpenCategory }: Props) {
               </motion.div>
             </div>
 
-            {/* MOBIL: teljes szélességű képek egymás alatt, saját aránnyal */}
+            {/* MOBIL: teljes szélességű képek egymás alatt */}
             <div className="container-editorial mt-10 space-y-4 sm:hidden">
               {list.map((photo, i) => (
                 <EditorialImage
@@ -81,37 +79,20 @@ export function Collections({ onOpenCategory }: Props) {
               ))}
             </div>
 
-            {/* ASZTALI: nagy nyitókép, alatta azonos magasságú képsor */}
-            <div className="hidden sm:block">
-              {first && (
-                <div className="container-editorial mt-16">
-                  <div className="flex justify-center">
+            {/* ASZTALI: szabálytalan rács, blokkonként más mintával */}
+            <div className="container-editorial hidden sm:block">
+              <div className="mt-14 grid grid-cols-12 gap-5 lg:gap-7">
+                {list.map((photo, i) => (
+                  <div key={photo.id} className={collection.layout[i] ?? "col-span-6"}>
                     <EditorialImage
-                      photo={first}
-                      heightClass="h-[56vh] lg:h-[64vh]"
-                      priority={ci === 0}
-                      onOpen={() => setOpen({ list, index: 0 })}
-                      sizes="90vw"
+                      photo={photo}
+                      priority={ci === 0 && i === 0}
+                      onOpen={() => setOpen({ list, index: i })}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>
-                </div>
-              )}
-
-              {rest.length > 0 && (
-                <div className="container-editorial">
-                  <div className="mt-8 flex flex-wrap items-start justify-center gap-5">
-                    {rest.map((photo, i) => (
-                      <EditorialImage
-                        key={photo.id}
-                        photo={photo}
-                        heightClass="h-[30vh] lg:h-[34vh]"
-                        onOpen={() => setOpen({ list, index: i + 1 })}
-                        sizes="33vw"
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
           </div>
         );
