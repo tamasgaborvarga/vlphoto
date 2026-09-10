@@ -73,15 +73,10 @@ export function Hero() {
         <div
           className="mt-10 flex flex-col gap-8 border-t border-fg/15 pt-7 sm:mt-14 sm:flex-row sm:items-end sm:justify-between"
         >
-          <div className="space-y-2">
-            <p className="font-mono text-label uppercase tracking-[0.18em] text-fg sm:tracking-[0.3em]">
-              Portré <span className="text-muted">&middot;</span> Páros{" "}
-              <span className="text-muted">&middot;</span> Szabadtéri
-            </p>
-            <p className="font-mono text-label-sm uppercase tracking-[0.18em] text-muted sm:tracking-[0.28em]">
-              {site.regionLong}
-            </p>
-          </div>
+          <p className="font-mono text-label uppercase tracking-[0.18em] text-fg sm:tracking-[0.3em]">
+            Portré <span className="text-muted">&middot;</span> Páros{" "}
+            <span className="text-muted">&middot;</span> Szabadtéri
+          </p>
 
           <button
             type="button"
@@ -97,6 +92,24 @@ export function Hero() {
           </button>
         </div>
       </motion.div>
+
+      {/* Görgetésjelző. Teljes képernyős nyitóképnél kell egy halk jelzés,
+          hogy van lejjebb — enélkül a látogatók egy része nem görget. */}
+      <motion.button
+        type="button"
+        onClick={() => scrollToSection("work")}
+        aria-label="Görgetés a munkákhoz"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.4, duration: 1.2, ease: heroEase }}
+        className="absolute bottom-7 left-1/2 z-10 hidden h-12 w-px -translate-x-1/2 overflow-hidden bg-fg/20 sm:block"
+      >
+        <motion.span
+          animate={{ y: ["-110%", "220%"] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-x-0 top-0 block h-1/2 bg-fg/80"
+        />
+      </motion.button>
     </section>
   );
 }

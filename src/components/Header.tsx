@@ -61,7 +61,12 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             aria-label={`${site.brand} — vissza az oldal tetejére`}
-            className="-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-lg uppercase tracking-[0.34em] text-fg"
+            tabIndex={solid ? 0 : -1}
+            /* A nyitókép fölött nincs logó: a hero maga mondja ki a márkanevet,
+               kétszer egy képernyőn fölösleges. Görgetéskor úszik be. */
+            className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-lg uppercase tracking-[0.34em] text-fg transition-opacity duration-700 ${
+              solid ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           >
             VL photo
           </button>
