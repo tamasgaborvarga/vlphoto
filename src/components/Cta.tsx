@@ -18,7 +18,7 @@ export function Cta() {
           Alkossunk együtt valami szépet.
         </h2>
 
-        <p className="mx-auto mt-7 max-w-lg font-display text-lg text-strong sm:text-xl">
+        <p className="mx-auto mt-7 max-w-lg font-mono text-sm font-light tracking-[0.04em] text-strong sm:text-base">
           Mesélj a fotózásról, amit elképzeltél.
         </p>
 

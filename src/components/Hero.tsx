@@ -45,7 +45,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.72, duration: 0.9, ease }}
-          className="mt-4 font-display text-xl text-strong sm:text-2xl lg:text-3xl"
+          className="mt-5 font-mono text-base font-light tracking-[0.04em] text-strong sm:text-lg"
         >
           {site.heroLine}
         </motion.p>

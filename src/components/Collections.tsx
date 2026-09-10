@@ -46,7 +46,7 @@ export function Collections({ onOpenCategory }: Props) {
                   <h2 className="mt-4 font-display text-5xl leading-none tracking-tight text-fg sm:text-6xl lg:text-7xl">
                     {collection.title}
                   </h2>
-                  <p className="mt-5 max-w-md font-display text-lg text-strong sm:text-xl">
+                  <p className="mt-5 max-w-md font-mono text-sm font-light tracking-[0.04em] text-strong sm:text-base">
                     {collection.line}
                   </p>
                 </div>
