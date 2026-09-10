@@ -50,29 +50,27 @@ export function Hero() {
       <div className="absolute inset-0 bg-ink/30" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
 
-      <div className="container-editorial relative z-10 pb-16 sm:pb-20 lg:pb-24">
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 1.7, ease: heroEase }}
+      {/* A teljes szövegblokk EGYETLEN animációval jelenik meg — nincs
+          lépcsőzés, minden egyszerre úszik be. */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 2, ease: heroEase }}
+        className="container-editorial relative z-10 pb-16 sm:pb-20 lg:pb-24"
+      >
+        <h1
           className="font-display text-[3.25rem] leading-[0.9] tracking-[-0.01em] text-fg sm:text-8xl lg:text-[8.5rem]"
         >
           VL photo
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 1.6, ease: heroEase }}
+        <p
           className="mt-4 font-display text-xl text-strong sm:text-2xl lg:text-3xl"
         >
           {site.heroLine}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.35, duration: 1.6, ease: heroEase }}
+        <div
           className="mt-10 flex flex-col gap-8 border-t border-fg/15 pt-7 sm:mt-14 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="space-y-2">
@@ -97,8 +95,8 @@ export function Hero() {
               &rarr;
             </span>
           </button>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
