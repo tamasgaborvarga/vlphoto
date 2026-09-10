@@ -121,8 +121,8 @@ Szerveres küldéshez (pl. Formspree) a `src/components/ContactForm.tsx`
 | Fekete | `#000000` (`bg-ink`) |
 | Fehér | `#FFFFFF` (`bg-paper`) |
 | Szürkék | `ash-50 … ash-900`, kizárólag keretekhez és finom hover állapotokhoz |
-| Címsorok és kenyérszöveg | Plus Jakarta Sans |
-| Feliratok, navigáció, gombok | Space Mono |
+| Címsorok és kenyérszöveg | Karla |
+| Feliratok, navigáció, gombok | Karla (nagybetű, ritkított) |
 
 A tokenek a `src/index.css` `@theme` blokkjában vannak (Tailwind v4 — nincs
 `tailwind.config.js`).
