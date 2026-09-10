@@ -1,4 +1,5 @@
-# VL photo — Varga Lilla Fotográfia
+| Címsorok és kenyérszöveg | Plus Jakarta Sans |
+| Feliratok, navigáció, gombok | Space Mono |# VL photo — Varga Lilla Fotográfia
 
 Fotós portfólió weboldal. Szigorúan fekete-fehér arculat, a fókusz a képeken van.
 
