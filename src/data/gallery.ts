@@ -21,6 +21,24 @@ import { kiemelt } from "./collections";
  */
 const ROLAM_KEP = "portre-091";
 
+/**
+ * MELYIK KÉPEK LÁTSZANAK
+ *
+ * A `public/galeria/` mappában mind a 151 kép megmarad — semmit nem törlünk,
+ * hogy bármikor lehessen cserélni. Az oldalon viszont csak az Instagram-anyag
+ * jelenik meg (77 kép): frissebb, és tónusban egységesebb, mint a régebbi
+ * Facebook-válogatás.
+ *
+ * Ha mindet mutatnád, állítsd ezt `true`-ra:
+ */
+const MIND_LATSZIK = false;
+
+/** Az Instagram-forrású képek azonosítója `-iNNN`-re végződik. */
+const instagramKep = (kep: Photo) => /-i\d+$/.test(kep.id);
+
+const latszik = (kep: Photo) =>
+  kep.id !== ROLAM_KEP && (MIND_LATSZIK || instagramKep(kep));
+
 /** Minden importált kép — a Rólam szekció innen keresi a sajátját. */
 export const osszesKep: Photo[] = generatedPhotos;
 
@@ -59,8 +77,8 @@ export const photos: Photo[] = [
   ...kiemelt
     .map((id) => generatedPhotos.find((p) => p.id === id))
     .filter((p): p is Photo => Boolean(p)),
-  ...generatedPhotos.filter((p) => !kiemelt.includes(p.id) && p.id !== ROLAM_KEP),
-];
+  ...generatedPhotos.filter((p) => !kiemelt.includes(p.id) && latszik(p)),
+].filter(latszik);
 
 /**
  * Csak azok a szűrők jelennek meg, amelyekhez ténylegesen van kép — így

@@ -17,6 +17,7 @@ import {
   readdirSync,
   statSync,
   copyFileSync,
+  readFileSync,
 } from "node:fs";
 import { join } from "node:path";
 
@@ -41,6 +42,35 @@ function copyDir(from, to) {
 
 rmSync(OUT, { recursive: true, force: true });
 copyDir(SRC, OUT);
+
+/**
+ * A nem megjelenített képek kihagyása a feltöltésből.
+ *
+ * A projektben MINDEN kép megmarad, hogy bármikor lehessen cserélni, de
+ * felesleges olyat feltölteni, amit az oldal nem mutat. A szabály ugyanaz,
+ * mint a src/data/gallery.ts-ben: ha MIND_LATSZIK = false, csak az
+ * Instagram-forrású képek (-iNNN) látszanak, plusz a Rólam szekció képe.
+ */
+function nemHasznaltGaleria() {
+  const gal = readFileSync("src/data/gallery.ts", "utf8");
+  if (/MIND_LATSZIK\s*=\s*true/.test(gal)) return 0;
+  const rolam = (gal.match(/ROLAM_KEP\s*=\s*"([^"]+)"/) || [])[1];
+  let torolt = 0;
+  for (const alkonyvtar of ["galeria", join("galeria", "nagy")]) {
+    const dir = join(OUT, alkonyvtar);
+    if (!existsSync(dir)) continue;
+    for (const f of readdirSync(dir)) {
+      if (!f.endsWith(".webp")) continue;
+      const id = f.replace(/\.webp$/, "");
+      if (/-i\d+$/.test(id) || id === rolam) continue;
+      rmSync(join(dir, f), { force: true });
+      torolt++;
+    }
+  }
+  return torolt;
+}
+
+const kihagyott = nemHasznaltGaleria();
 
 // Cache-szabályok: a hasított assetek örökre, a HTML soha.
 writeFileSync(
@@ -80,6 +110,7 @@ function sizeOf(dir) {
 }
 
 const { bytes, files } = sizeOf(OUT);
+if (kihagyott) console.log(`Kihagyva a feltöltésből: ${kihagyott} nem megjelenített kép`);
 console.log(`Kész: ${OUT}/  —  ${files} fájl, ${(bytes / 1024 / 1024).toFixed(1)} MB`);
 console.log("");
 console.log("Húzd be ezt a mappát: Cloudflare Pages → Create project → Upload assets");

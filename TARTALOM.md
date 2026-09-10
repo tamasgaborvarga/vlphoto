@@ -22,7 +22,7 @@ Utolsó ellenőrzés: 2026-09-07.
 
 ### A galéria képei
 
-**151 kép, mind Varga Lilla valódi munkája.** 74 a Facebook-oldalról
+**A mappában 151 kép van, az oldalon 77 látszik.** 74 a Facebook-oldalról
 (2026-09-07) és 77 az Instagramról (2026-09-10), mindkettő bejelentkezett
 munkamenetből letöltve.
 
@@ -32,7 +32,12 @@ csak egy maradt. A hero háttérképe és a Rólam szekció képe sem szerepel a
 teljes anyagban, és a kiemelt képek is mások, mint a kategóriablokkokéi. Nincs helyőrző, nincs
 stockfotó az oldalon.
 
-A három kategóriablokk képei az INSTAGRAM-anyagból valók: frissebb, és
+Demóhoz csak az Instagram-anyag jelenik meg — frissebb es tonusban
+egysegesebb. A Facebook-kepek a projektben maradnak, barmikor visszahozhatok
+(MIND_LATSZIK = true a src/data/gallery.ts-ben). A feltoltesbol a nem
+megjelenitett kepek automatikusan kimaradnak.
+
+A harom kategoriablokk kepei az INSTAGRAM-anyagbol valok: frissebb, és
 színvilágban egységesebb. A blokkok egymáshoz is válogatva vannak —
 Portré: vászon háttér, krém-szürke; Páros: meleg kő és borostyán;
 Szabadtéri: aranyóra.
