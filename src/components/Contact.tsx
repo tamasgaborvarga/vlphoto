@@ -12,7 +12,7 @@ export function Contact() {
       className="surface-inverse scroll-mt-20 bg-bg py-24 text-fg sm:py-32 lg:py-40"
     >
       <div className="container-editorial">
-        <motion.p
+        <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -20,7 +20,7 @@ export function Contact() {
           className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted"
         >
           Kapcsolat
-        </motion.p>
+        </motion.h2>
 
         <div className="mt-10 grid grid-cols-12 gap-x-5 gap-y-14">
           <motion.div
@@ -37,7 +37,7 @@ export function Contact() {
                 </p>
                 <a
                   href={site.emailHref}
-                  className="mt-2 block break-all font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
+                  className="-my-2 mt-2 flex min-h-11 items-center break-all py-2 font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
                 >
                   {site.email}
                 </a>
@@ -48,7 +48,7 @@ export function Contact() {
                 </p>
                 <a
                   href={site.phoneHref}
-                  className="mt-2 block font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
+                  className="-my-2 mt-2 flex min-h-11 items-center py-2 font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
                 >
                   {site.phone}
                 </a>
@@ -67,7 +67,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="VL photo Instagram-oldala"
-                className="text-muted transition-colors duration-500 hover:text-fg"
+                className="-m-3 flex min-h-11 min-w-11 items-center justify-center text-muted transition-colors duration-500 hover:text-fg"
               >
                 <InstagramIcon size={19} strokeWidth={1.1} />
               </a>
@@ -76,7 +76,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="VL photo Facebook-oldala"
-                className="text-muted transition-colors duration-500 hover:text-fg"
+                className="-m-3 flex min-h-11 min-w-11 items-center justify-center text-muted transition-colors duration-500 hover:text-fg"
               >
                 <FacebookIcon size={19} strokeWidth={1.1} />
               </a>

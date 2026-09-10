@@ -16,11 +16,14 @@ export function Footer() {
             href={site.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-500 hover:text-fg"
+            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-500 hover:text-fg"
           >
             Instagram
           </a>
-          <a href={site.emailHref} className="transition-colors duration-500 hover:text-fg">
+          <a
+            href={site.emailHref}
+            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-500 hover:text-fg"
+          >
             E-mail
           </a>
         </div>

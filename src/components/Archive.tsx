@@ -65,11 +65,17 @@ export function Archive({ filter, onFilterChange }: Props) {
                 role="tab"
                 aria-selected={active}
                 onClick={() => onFilterChange(cat.id)}
-                className={`border-b pb-1 font-mono text-[0.62rem] uppercase tracking-[0.24em] transition-colors duration-500 ${
-                  active ? "border-fg text-fg" : "border-transparent text-muted hover:text-fg"
+                className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-[0.62rem] uppercase tracking-[0.24em] transition-colors duration-500 ${
+                  active ? "text-fg" : "text-muted hover:text-fg"
                 }`}
               >
-                {cat.label}
+                {/* Az aláhúzás a belső spanon marad, hogy a nagyobb érintési
+                    felület ne tolja el a vonalat a szövegtől. */}
+                <span
+                  className={`border-b pb-1 ${active ? "border-fg" : "border-transparent"}`}
+                >
+                  {cat.label}
+                </span>
               </button>
             );
           })}
@@ -101,7 +107,7 @@ export function Archive({ filter, onFilterChange }: Props) {
             <button
               type="button"
               onClick={() => setLimit((l) => l + ADAG)}
-              className="group inline-flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg"
+              className="group -my-3 inline-flex items-center gap-3 py-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg"
             >
               <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
                 Több kép

@@ -113,3 +113,24 @@ fájlokat, mielőtt az oldal élesbe megy.
 - [ ] Képhasználat egyeztetve Lillával
 - [ ] Domain + hosting kiválasztva
 - [ ] `og:image` és megosztási előnézet beállítva (jelenleg nincs)
+
+---
+
+## Design-audit (2026-09-10)
+
+A `design-for-ai` skill CHECKER módja szerint. Javítva:
+
+- **Kontraszt:** a világos szekciók halvány szürkéje fehéren 3,45:1 volt
+  (WCAG AA minimum 4,5:1). Érintette a Rólam „Kitöltésre vár" blokkját és a
+  Kapcsolat összes címkéjét. Új érték: #6f6f6f → 5,02:1.
+- **Érintési felületek:** mobilon minden szöveges gomb 17-21 px magas volt,
+  a minimum 44. Most méréssel ellenőrizve: nulla 44 px alatti célpont.
+- **Címsor-hierarchia:** a Kapcsolat szekció címe `<p>` volt, most `<h2>`.
+
+Nyitva maradt (tudatosan):
+
+- A tipográfiai skálában hét önkényes méret van 0,55 és 0,72 rem között —
+  ezek egy része érzékelhetetlenül tér el egymástól.
+- Az alt szövegek kategória-szintűek, nem képenkéntiek.
+- Az `og:image` relatív útvonal; éles domain után abszolútra kell írni.
+- A hero az egyetlen vágott kép az oldalon.

@@ -104,7 +104,7 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="group inline-flex items-center gap-3 self-start font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg"
+          className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg"
         >
           <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
             Üzenet küldése

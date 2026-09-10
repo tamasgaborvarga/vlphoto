@@ -69,7 +69,7 @@ export function Hero() {
           <button
             type="button"
             onClick={() => scrollToSection("contact")}
-            className="group inline-flex items-center gap-3 self-start font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg sm:self-auto"
+            className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg sm:self-auto"
           >
             <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
               Foglalj fotózást

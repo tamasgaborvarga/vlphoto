@@ -54,7 +54,7 @@ export function Collections({ onOpenCategory }: Props) {
                 <button
                   type="button"
                   onClick={() => onOpenCategory(collection.id)}
-                  className="group mt-8 inline-flex items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0"
+                  className="group mt-8 inline-flex items-center gap-3 py-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0 lg:-my-3"
                 >
                   <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
                     Összes {collection.title.toLowerCase()} kép

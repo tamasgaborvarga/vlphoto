@@ -61,7 +61,7 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             aria-label={`${site.brand} — vissza az oldal tetejére`}
-            className="font-mono text-[0.72rem] uppercase tracking-[0.34em] text-fg"
+            className="-my-3 inline-flex min-h-11 items-center py-3 font-mono text-[0.72rem] uppercase tracking-[0.34em] text-fg"
           >
             VL photo
           </button>
@@ -102,7 +102,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobil-menu"
               aria-label={open ? "Menü bezárása" : "Menü megnyitása"}
-              className="-mr-2 p-2 text-fg md:hidden"
+              className="-mr-3 p-3 text-fg md:hidden"
             >
               {open ? <X size={22} strokeWidth={1.1} /> : <Menu size={22} strokeWidth={1.1} />}
             </button>
@@ -149,10 +149,10 @@ export function Header() {
                 transition={{ delay: 0.32, duration: 0.5 }}
                 className="mt-12 space-y-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted"
               >
-                <a href={site.emailHref} className="block hover:text-fg">
+                <a href={site.emailHref} className="-my-2 block py-2 hover:text-fg">
                   {site.email}
                 </a>
-                <a href={site.phoneHref} className="block hover:text-fg">
+                <a href={site.phoneHref} className="-my-2 block py-2 hover:text-fg">
                   {site.phone}
                 </a>
                 <a

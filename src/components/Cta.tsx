@@ -25,7 +25,7 @@ export function Cta() {
         <button
           type="button"
           onClick={() => scrollToSection("contact")}
-          className="group mt-12 inline-flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-fg"
+          className="group mt-12 inline-flex items-center gap-3 py-3 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-fg"
         >
           <span className="border-b border-fg/40 pb-1.5 transition-colors duration-500 group-hover:border-fg">
             Kapcsolat
