@@ -3,7 +3,13 @@ import { site } from "../data/site";
 import { heroImage, heroImageMobil, photoSrc } from "../data/gallery";
 import { scrollToSection } from "../lib/scroll";
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/**
+ * A nyitóblokk szövegéhez lágyabb görbe és hosszabb idő tartozik, mint az
+ * oldal többi mozgásához. A [0.22, 1, 0.36, 1] nagyon gyorsan indul —
+ * ez apró elemeken jó, egy teljes képernyős nyitóképen viszont rántásnak
+ * hat. A [0.16, 0.84, 0.24, 1] egyenletesebben gyorsul és lassul.
+ */
+const heroEase = [0.16, 0.84, 0.24, 1] as const;
 
 /**
  * Teljes képernyős nyitókép, ráúsztatott szöveggel.
@@ -24,9 +30,9 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         fetchPriority="high"
-        initial={{ scale: 1.06, opacity: 0 }}
+        initial={{ scale: 1.05, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.2, ease }}
+        transition={{ duration: 2.8, ease: heroEase }}
         className="absolute inset-0 h-full w-full object-cover sm:hidden"
       />
       {/* Asztali: fekvő kép */}
@@ -34,9 +40,9 @@ export function Hero() {
         src={photoSrc(heroImage)}
         alt=""
         aria-hidden="true"
-        initial={{ scale: 1.06, opacity: 0 }}
+        initial={{ scale: 1.05, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.2, ease }}
+        transition={{ duration: 2.8, ease: heroEase }}
         className="absolute inset-0 hidden h-full w-full object-cover sm:block"
       />
 
@@ -46,27 +52,27 @@ export function Hero() {
 
       <div className="container-editorial relative z-10 pb-16 sm:pb-20 lg:pb-24">
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1.1, ease }}
+          transition={{ delay: 0.65, duration: 1.7, ease: heroEase }}
           className="font-display text-[3.25rem] leading-[0.9] tracking-[-0.01em] text-fg sm:text-8xl lg:text-[8.5rem]"
         >
           VL photo
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.72, duration: 0.9, ease }}
+          transition={{ delay: 1.0, duration: 1.6, ease: heroEase }}
           className="mt-4 font-display text-xl text-strong sm:text-2xl lg:text-3xl"
         >
           {site.heroLine}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.95, duration: 1, ease }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.35, duration: 1.6, ease: heroEase }}
           className="mt-10 flex flex-col gap-8 border-t border-fg/15 pt-7 sm:mt-14 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="space-y-2">
