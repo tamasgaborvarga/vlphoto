@@ -37,7 +37,7 @@ export function Contact() {
                 </p>
                 <a
                   href={site.emailHref}
-                  className="mt-2 block break-all font-display text-xl underline-offset-4 hover:underline sm:text-2xl"
+                  className="mt-2 block break-all font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
                 >
                   {site.email}
                 </a>
@@ -48,7 +48,7 @@ export function Contact() {
                 </p>
                 <a
                   href={site.phoneHref}
-                  className="mt-2 block font-display text-xl underline-offset-4 hover:underline sm:text-2xl"
+                  className="mt-2 block font-mono text-base font-light tracking-[0.02em] underline-offset-4 hover:underline sm:text-lg"
                 >
                   {site.phone}
                 </a>
@@ -57,7 +57,7 @@ export function Contact() {
                 <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
                   Helyszín
                 </p>
-                <p className="mt-2 font-display text-xl sm:text-2xl">{site.regionLong}</p>
+                <p className="mt-2 font-mono text-base font-light tracking-[0.02em] sm:text-lg">{site.regionLong}</p>
               </li>
             </ul>
 

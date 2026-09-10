@@ -11,8 +11,8 @@
    fekete-fehér sávok egy helyen vannak definiálva.
    ------------------------------------------------------------------ */
 @theme {
-  --font-display: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-sans: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "EB Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "EB Garamond", ui-serif, Georgia, serif;
   --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Felülettől függő színek. Az itteni értékek csak alapértelmezések —
