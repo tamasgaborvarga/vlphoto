@@ -40,7 +40,7 @@ export function Collections({ onOpenCategory }: Props) {
                 className="border-t border-line pt-14 lg:flex lg:items-end lg:justify-between"
               >
                 <div>
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">
+                  <p className="font-mono text-label-sm uppercase tracking-[0.32em] text-muted">
                     {String(ci + 1).padStart(2, "0")}
                   </p>
                   <h2 className="mt-4 font-display text-5xl leading-none tracking-tight text-fg sm:text-6xl lg:text-7xl">
@@ -54,7 +54,7 @@ export function Collections({ onOpenCategory }: Props) {
                 <button
                   type="button"
                   onClick={() => onOpenCategory(collection.id)}
-                  className="group mt-8 inline-flex items-center gap-3 py-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg lg:mt-0 lg:-my-3"
+                  className="group mt-8 inline-flex items-center gap-3 py-3 font-mono text-label uppercase tracking-[0.28em] text-fg lg:mt-0 lg:-my-3"
                 >
                   <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
                     Összes {collection.title.toLowerCase()} kép

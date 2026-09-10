@@ -16,9 +16,9 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=DM+Mono:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <!-- Megosztási előnézet.
-         FIGYELEM: a Facebook és a legtöbb szolgáltatás TELJES URL-t vár.
-         Éles domain után írd át: https://sajat-domain.hu/og.jpg -->
+    <!-- Megosztási előnézet. A teljes URL a .env fájlból jön (VITE_SITE_URL),
+         mert a Facebook és a legtöbb szolgáltatás abszolút címet vár. -->
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="VL photo" />
     <meta property="og:locale" content="hu_HU" />
@@ -27,12 +27,12 @@
       property="og:description"
       content="Fotográfus Budapesten. Portré, jegyes és páros, szezonális, valamint kreatív szabadtéri fotózás."
     />
-    <meta property="og:image" content="/og.jpg" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="VL photo by Varga Lilla" />
-    <meta name="twitter:image" content="/og.jpg" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og.jpg" />
   </head>
   <body>
     <div id="root"></div>

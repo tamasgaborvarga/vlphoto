@@ -33,7 +33,7 @@ export function StickyContact() {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           onClick={() => scrollToSection("contact")}
-          className="surface-fixed-dark fixed bottom-5 left-1/2 z-40 -translate-x-1/2 rounded-full border border-fg/25 bg-ink/80 px-7 py-3.5 font-mono text-[0.62rem] uppercase tracking-[0.26em] text-fg backdrop-blur-md md:hidden"
+          className="surface-fixed-dark fixed bottom-5 left-1/2 z-40 -translate-x-1/2 rounded-full border border-fg/25 bg-ink/80 px-7 py-3.5 font-mono text-label-sm uppercase tracking-[0.26em] text-fg backdrop-blur-md md:hidden"
         >
           Foglalj fotózást
         </motion.button>

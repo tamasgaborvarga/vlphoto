@@ -43,10 +43,10 @@ export function Archive({ filter, onFilterChange }: Props) {
           transition={{ duration: 0.9, ease }}
           className="flex items-baseline justify-between border-b border-line pb-6"
         >
-          <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.32em] text-fg">
+          <h2 className="font-mono text-label uppercase tracking-[0.32em] text-fg">
             Teljes anyag
           </h2>
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
+          <span className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
             {shown.length} / {visible.length}
           </span>
         </motion.div>
@@ -65,7 +65,7 @@ export function Archive({ filter, onFilterChange }: Props) {
                 role="tab"
                 aria-selected={active}
                 onClick={() => onFilterChange(cat.id)}
-                className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-[0.62rem] uppercase tracking-[0.24em] transition-colors duration-500 ${
+                className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-sm uppercase tracking-[0.24em] transition-colors duration-500 ${
                   active ? "text-fg" : "text-muted hover:text-fg"
                 }`}
               >
@@ -107,7 +107,7 @@ export function Archive({ filter, onFilterChange }: Props) {
             <button
               type="button"
               onClick={() => setLimit((l) => l + ADAG)}
-              className="group -my-3 inline-flex items-center gap-3 py-3 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-fg"
+              className="group -my-3 inline-flex items-center gap-3 py-3 font-mono text-label uppercase tracking-[0.28em] text-fg"
             >
               <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
                 Több kép

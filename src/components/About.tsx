@@ -44,7 +44,7 @@ export function About() {
                 />
               </figure>
             )}
-            <p className="mt-3 font-mono text-[0.55rem] uppercase tracking-[0.24em] text-muted">
+            <p className="mt-3 font-mono text-label-sm uppercase tracking-[0.24em] text-muted">
               Helyőrző — ide Lilla saját portréja kerül
             </p>
           </motion.div>
@@ -56,7 +56,7 @@ export function About() {
             transition={{ duration: 1, delay: 0.12, ease }}
             className="col-span-12 lg:col-span-6 lg:col-start-7"
           >
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted">Rólam</p>
+            <p className="font-mono text-label-sm uppercase tracking-[0.32em] text-muted">Rólam</p>
 
             <h2 className="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl lg:text-7xl">
               {site.photographer}
@@ -68,7 +68,7 @@ export function About() {
 
             {/* HELYŐRZŐ — Lilla saját szavaival kell kitölteni. */}
             <div className="mt-10 border-l border-line pl-6">
-              <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
+              <p className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
                 Kitöltésre vár
               </p>
               <p className="mt-3 max-w-md text-base leading-relaxed text-muted">
@@ -81,7 +81,7 @@ export function About() {
             <ul className="mt-12 divide-y divide-line border-y border-line">
               {PONTOK.map((pont, i) => (
                 <li key={pont} className="flex items-baseline gap-6 py-4">
-                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
+                  <span className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-display text-lg sm:text-xl">{pont}</span>

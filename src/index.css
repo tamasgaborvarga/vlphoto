@@ -29,6 +29,14 @@
   --color-ink: #000000;
   --color-paper: #ffffff;
 
+  /* Feliratok mérete — HÁROM lépcső, nem hét önkényes érték.
+     Korábban 0,55 / 0,6 / 0,62 / 0,65 / 0,68 / 0,7 / 0,72 rem volt egymás
+     mellett; a 0,02 rem különbség (0,32 px) érzékelhetetlen, tehát nem
+     hierarchia, hanem a rendszer hiánya. */
+  --text-label-sm: 0.6rem;
+  --text-label: 0.68rem;
+  --text-label-lg: 0.78rem;
+
   --tracking-brand: 0.32em;
 }
 

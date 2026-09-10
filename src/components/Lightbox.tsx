@@ -59,7 +59,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
         >
           {/* Fejléc: számláló + bezárás */}
           <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-6">
-            <span className="text-[0.65rem] font-light font-mono uppercase tracking-[0.3em] text-muted">
+            <span className="text-label font-light font-mono uppercase tracking-[0.3em] text-muted">
               {index + 1} / {photos.length}
             </span>
             <button

@@ -61,7 +61,7 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             aria-label={`${site.brand} — vissza az oldal tetejére`}
-            className="-my-3 inline-flex min-h-11 items-center py-3 font-mono text-[0.72rem] uppercase tracking-[0.34em] text-fg"
+            className="-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-lg uppercase tracking-[0.34em] text-fg"
           >
             VL photo
           </button>
@@ -75,7 +75,7 @@ export function Header() {
                       type="button"
                       onClick={() => go(link.id)}
                       aria-current={active === link.id ? "true" : undefined}
-                      className={`font-mono text-[0.65rem] uppercase tracking-[0.26em] transition-colors duration-500 hover:text-fg ${
+                      className={`font-mono text-label uppercase tracking-[0.26em] transition-colors duration-500 hover:text-fg ${
                         active === link.id ? "text-fg" : "text-muted"
                       }`}
                     >
@@ -147,7 +147,7 @@ export function Header() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.32, duration: 0.5 }}
-                className="mt-12 space-y-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted"
+                className="mt-12 space-y-2 font-mono text-label uppercase tracking-[0.2em] text-muted"
               >
                 <a href={site.emailHref} className="-my-2 block py-2 hover:text-fg">
                   {site.email}

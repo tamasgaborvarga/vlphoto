@@ -10,7 +10,8 @@ export type Collection = {
   photos: string[];
   /**
    * ASZTALI elrendezés: képenként egy 12 oszlopos rács-osztály.
-   * A `col-start` és a `mt` értékek adják a szabálytalan ritmust —
+   * A `col-start` és a `mt` értékek adják a szabálytalan ritmust. Az
+   * eltolás CSAK három érték lehet: mt-8 / mt-16 / mt-24 (32/64/96 px) —
    * blokkonként szándékosan MÁS a minta, hogy ne tűnjön sablonnak.
    * Mobilon ez nem érvényes: ott minden kép teljes szélességű.
    */
@@ -33,18 +34,18 @@ export const collections: Collection[] = [
     photos: [
       "portre-i063",
       "portre-i005",
-      "portre-i098",
       "portre-i035",
+      "portre-i098",
       "portre-i012",
       "portre-i143",
     ],
     layout: [
       "col-span-6",
-      "col-start-8 col-span-5 mt-16",
-      "col-start-2 col-span-4 mt-12",
-      "col-start-7 col-span-5 mt-20",
-      "col-start-1 col-span-5 mt-16",
-      "col-start-7 col-span-4 mt-10",
+      "col-start-2 col-span-4 mt-16",
+      "col-start-8 col-span-4 mt-24",
+      "col-start-1 col-span-4 mt-16",
+      "col-start-6 col-span-4 mt-8",
+      "col-start-9 col-span-3 mt-16",
     ],
   },
   {
@@ -60,12 +61,12 @@ export const collections: Collection[] = [
       "paros-i139",
     ],
     layout: [
-      "col-start-2 col-span-6",
-      "col-start-9 col-span-3 mt-20",
-      "col-start-1 col-span-5 mt-14",
-      "col-start-7 col-span-6 mt-6",
-      "col-start-3 col-span-4 mt-16",
+      "col-span-6",
+      "col-start-2 col-span-4 mt-16",
       "col-start-8 col-span-4 mt-24",
+      "col-start-1 col-span-5 mt-16",
+      "col-start-7 col-span-5 mt-8",
+      "col-start-8 col-span-4 mt-16",
     ],
   },
   {
@@ -76,17 +77,17 @@ export const collections: Collection[] = [
       "kreativ-i128",
       "kreativ-i134",
       "kreativ-i130",
-      "kreativ-i135",
       "kreativ-i002",
+      "kreativ-i135",
       "kreativ-i122",
     ],
     layout: [
       "col-span-8",
-      "col-start-10 col-span-3 mt-24",
-      "col-start-2 col-span-6 mt-12",
-      "col-start-9 col-span-4 mt-20",
-      "col-start-1 col-span-4 mt-14",
-      "col-start-6 col-span-6 mt-8",
+      "col-start-2 col-span-4 mt-16",
+      "col-start-7 col-span-4 mt-24",
+      "col-start-1 col-span-3 mt-16",
+      "col-start-5 col-span-5 mt-8",
+      "col-start-6 col-span-5 mt-16",
     ],
   },
 ];

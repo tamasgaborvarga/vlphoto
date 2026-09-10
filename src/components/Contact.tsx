@@ -17,7 +17,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.9, ease }}
-          className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-muted"
+          className="font-mono text-label-sm uppercase tracking-[0.32em] text-muted"
         >
           Kapcsolat
         </motion.h2>
@@ -32,7 +32,7 @@ export function Contact() {
           >
             <ul className="space-y-8">
               <li>
-                <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
+                <p className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
                   E-mail
                 </p>
                 <a
@@ -43,7 +43,7 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
+                <p className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
                   Telefon
                 </p>
                 <a
@@ -54,7 +54,7 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted">
+                <p className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
                   Helyszín
                 </p>
                 <p className="mt-2 font-mono text-base font-light tracking-[0.02em] sm:text-lg">{site.regionLong}</p>

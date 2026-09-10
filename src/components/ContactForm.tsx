@@ -1,13 +1,18 @@
 import { useState, type FormEvent } from "react";
 import { site } from "../data/site";
 
-/** A megrendelő által megerősített négy kategória + egy nyitott válasz. */
+/**
+ * A megrendelő által megerősített négy kategória, plusz az üzleti munka.
+ * Az „Egyéb" a végén marad, de már nem „még nem tudom" — az bizonytalanságot
+ * sugallt, ami egy árajánlatkérésnél rossz benyomás.
+ */
 const TIPUSOK = [
   "Portréfotózás",
   "Jegyes és páros fotózás",
   "Kreatív szabadtéri fotózás",
   "Karácsonyi és szezonális fotózás",
-  "Egyéb / még nem tudom",
+  "Üzleti fotózás / esemény",
+  "Egyéb",
 ];
 
 /**
@@ -38,7 +43,7 @@ export function ContactForm() {
 
   const field =
     "w-full border-b border-line bg-transparent py-3 text-base text-fg outline-none transition-colors duration-500 placeholder:text-muted focus:border-fg";
-  const label = "font-mono text-[0.55rem] uppercase tracking-[0.28em] text-muted";
+  const label = "font-mono text-label-sm uppercase tracking-[0.28em] text-muted";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-9">
@@ -104,7 +109,7 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg"
+          className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-label uppercase tracking-[0.28em] text-fg"
         >
           <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
             Üzenet küldése

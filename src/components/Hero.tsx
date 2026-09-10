@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { site } from "../data/site";
-import { heroImage, photoSrc } from "../data/gallery";
+import { heroImage, heroImageMobil, photoSrc } from "../data/gallery";
 import { scrollToSection } from "../lib/scroll";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Teljes képernyős nyitókép. A fotó adja el a fotóst, a szöveg csak keretezi:
- * márkanév, egy sor, három irány, egyetlen halk gomb.
+ * Teljes képernyős nyitókép, ráúsztatott szöveggel.
+ *
+ * Két külön képfájl: asztalon fekvő, mobilon ÁLLÓ. Így mindkét arányban
+ * megmarad a teljes képernyős hatás anélkül, hogy a kitöltés komoly részt
+ * vágna le a kompozícióból.
  */
 export function Hero() {
   return (
@@ -15,18 +18,28 @@ export function Hero() {
       id="hero"
       className="surface-fixed-dark relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-bg"
     >
+      {/* Mobil: álló kép */}
+      <motion.img
+        src={photoSrc(heroImageMobil)}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        initial={{ scale: 1.06, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2.2, ease }}
+        className="absolute inset-0 h-full w-full object-cover sm:hidden"
+      />
+      {/* Asztali: fekvő kép */}
       <motion.img
         src={photoSrc(heroImage)}
         alt=""
         aria-hidden="true"
-        fetchPriority="high"
-        initial={{ scale: 1.08, opacity: 0 }}
+        initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2.2, ease }}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 hidden h-full w-full object-cover sm:block"
       />
 
-      {/* Fátylak: fent a fejléchez, lent a szöveghez */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/70 to-transparent" />
       <div className="absolute inset-0 bg-ink/30" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
@@ -57,11 +70,11 @@ export function Hero() {
           className="mt-10 flex flex-col gap-8 border-t border-fg/15 pt-7 sm:mt-14 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="space-y-2">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.3em] text-fg">
+            <p className="font-mono text-label uppercase tracking-[0.18em] text-fg sm:tracking-[0.3em]">
               Portré <span className="text-muted">&middot;</span> Páros{" "}
               <span className="text-muted">&middot;</span> Szabadtéri
             </p>
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-muted">
+            <p className="font-mono text-label-sm uppercase tracking-[0.18em] text-muted sm:tracking-[0.28em]">
               {site.regionLong}
             </p>
           </div>
@@ -69,13 +82,13 @@ export function Hero() {
           <button
             type="button"
             onClick={() => scrollToSection("contact")}
-            className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg sm:self-auto"
+            className="group -my-3 inline-flex min-h-11 items-center gap-3 self-start py-3 font-mono text-label uppercase tracking-[0.28em] text-fg sm:self-auto"
           >
             <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
               Foglalj fotózást
             </span>
             <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
-              →
+              &rarr;
             </span>
           </button>
         </motion.div>

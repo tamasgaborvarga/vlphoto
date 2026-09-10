@@ -87,6 +87,19 @@ export const heroImage = {
 };
 
 /**
+ * Mobil nyitókép — ÁLLÓ tájolású, részletgazdag felvétel.
+ * Azért külön kép, mert egy fekvő fotó álló kijelzőn a szélesség ~70%-át
+ * elveszítené; így a teljes képernyős hatás megmarad vágás-kár nélkül.
+ * Forrás: paros-216 (kastélybelső).
+ */
+export const heroImageMobil = {
+  src: "hero-mobil.webp",
+  alt: "",
+  width: 1333,
+  height: 2000,
+};
+
+/**
  * Kép URL feloldása. A `BASE_URL` miatt a hivatkozás fejlesztés közben `/`-ról,
  * buildben `./`-ról indul — így az egyfájlos (file://) változatban is betöltődik.
  */
