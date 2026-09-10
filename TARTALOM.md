@@ -54,9 +54,9 @@ Minden képből két méret készül: a rácsba max 900 px (WebP q80), a nagyít
 max 1600 px (WebP q86). Együtt 22 MB. Élesítés előtt érdemes az eredeti fájlokat bekérni Lillától.
 A nyers, letöltött fájlok: `fotok-nyers/` (257 db, 75 MB).
 
-⚠️ **Az `alt` szövegek kategória-szintűek** („Portréfotó — Varga Lilla, VL photo"),
-nem képenként megírtak. Ha fontos az akadálymentesség és a képkeresés, ezeket
-érdemes egyenként pontosítani a `src/data/photos.generated.ts` fájlban.
+Az `alt` szövegek **képenként megírtak** — mind a 151 kép saját, leíró
+magyar szöveget kapott (pl. „Menyasszony a kastély folyosóján, korlátnál").
+A `npm run galeria` újrafuttatása megőrzi őket.
 
 A „Rólam" szekcióban jelenleg nincs kép: Lilláról nincs fotónk, idegen ember
 képét pedig nem tesszük oda.
@@ -129,8 +129,7 @@ A `design-for-ai` skill CHECKER módja szerint. Javítva:
 
 Nyitva maradt (tudatosan):
 
-- A tipográfiai skálában hét önkényes méret van 0,55 és 0,72 rem között —
-  ezek egy része érzékelhetetlenül tér el egymástól.
-- Az alt szövegek kategória-szintűek, nem képenkéntiek.
-- Az `og:image` relatív útvonal; éles domain után abszolútra kell írni.
-- A hero az egyetlen vágott kép az oldalon.
+Az audit MINDEN pontja lezárva. Ami a te oldaladon maradt:
+
+- Az `og:image` címe a `.env` fájl `VITE_SITE_URL` sorából jön — éles
+  domain után ezt kell átírni, majd `npm run deploy`.
