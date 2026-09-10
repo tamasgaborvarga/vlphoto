@@ -22,11 +22,15 @@ Utolsó ellenőrzés: 2026-09-07.
 
 ### A galéria képei
 
-**77 kép, mind Varga Lilla valódi munkája**, a VL photo Facebook-oldaláról
-(bejelentkezett munkamenetből letöltve, 2026-09-07). Nincs helyőrző, nincs
+**157 kép, mind Varga Lilla valódi munkája.** 77 a Facebook-oldalról
+(2026-09-07) és 80 az Instagramról (2026-09-10), mindkettő bejelentkezett
+munkamenetből letöltve. Nincs helyőrző, nincs
 stockfotó az oldalon.
 
-Besorolás: Páros & Jegyes 30 · Portré 26 · Kreatív szabadtéri 11 · Szezonális 10.
+A három kategóriablokk képei az INSTAGRAM-anyagból valók: frissebb, és
+színvilágban egységesebb. A blokkok egymáshoz is válogatva vannak —
+Portré: vászon háttér, krém-szürke; Páros: meleg kő és borostyán;
+Szabadtéri: aranyóra.
 
 **A 251 letöltött képből 77 került ki válogatással.** A jelmezes / szürreális
 sorozat (169–174) a megrendelő kérésére kimaradt: nem illett a többi kép
