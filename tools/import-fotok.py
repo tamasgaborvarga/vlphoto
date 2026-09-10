@@ -21,7 +21,11 @@ OUT = os.path.join("public", "galeria")
 OUT_FULL = os.path.join(OUT, "nagy")
 
 # Nem fotók: logó és reklámgrafika
-KIHAGY = {34, 40, 132, 137, 138, 168}
+KIHAGY = {34, 40, 132, 137, 138, 168,
+          # Ugyanaz a kép megvan az Instagram-anyagban is (a jobb ott marad):
+          63, 86,
+          # A hero háttérképe — ne szerepeljen még egyszer a galériában:
+          158}
 
 # Jelmezes / szürreális sorozat — a user kérésére kimarad (171: maszkos-rojtos,
 # 173: gombaszobor). Nem illik a többi kép vizuális nyelvéhez.

@@ -22,9 +22,14 @@ Utolsó ellenőrzés: 2026-09-07.
 
 ### A galéria képei
 
-**157 kép, mind Varga Lilla valódi munkája.** 77 a Facebook-oldalról
-(2026-09-07) és 80 az Instagramról (2026-09-10), mindkettő bejelentkezett
-munkamenetből letöltve. Nincs helyőrző, nincs
+**151 kép, mind Varga Lilla valódi munkája.** 74 a Facebook-oldalról
+(2026-09-07) és 77 az Instagramról (2026-09-10), mindkettő bejelentkezett
+munkamenetből letöltve.
+
+**Nincs ismétlődő fotó az oldalon.** Perceptuális hasonlóság-vizsgálattal
+(dHash) öt olyan képet találtunk, ami mindkét forrásban megvolt — ezekből
+csak egy maradt. A hero háttérképe és a Rólam szekció képe sem szerepel a
+teljes anyagban, és a kiemelt képek is mások, mint a kategóriablokkokéi. Nincs helyőrző, nincs
 stockfotó az oldalon.
 
 A három kategóriablokk képei az INSTAGRAM-anyagból valók: frissebb, és

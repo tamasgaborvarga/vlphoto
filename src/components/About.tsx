@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { site } from "../data/site";
-import { photos, photoSrc } from "../data/gallery";
+import { osszesKep, photoSrc } from "../data/gallery";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -20,7 +20,7 @@ const PONTOK = [
 const HELYORZO_KEP = "portre-091";
 
 export function About() {
-  const kep = photos.find((p) => p.id === HELYORZO_KEP);
+  const kep = osszesKep.find((p) => p.id === HELYORZO_KEP);
 
   return (
     <section id="about" className="surface-inverse scroll-mt-20 bg-bg py-24 text-fg sm:py-32 lg:py-40">

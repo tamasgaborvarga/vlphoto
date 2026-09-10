@@ -14,6 +14,16 @@
 import { generatedPhotos } from "./photos.generated";
 import { kiemelt } from "./collections";
 
+/**
+ * A „Rólam" szekció képe. Kikerül a teljes anyagból, hogy ne szerepeljen
+ * kétszer ugyanaz a fotó az oldalon. (A hero képe eleve külön fájl, és a
+ * forrása ki van hagyva az importból.)
+ */
+const ROLAM_KEP = "portre-091";
+
+/** Minden importált kép — a Rólam szekció innen keresi a sajátját. */
+export const osszesKep: Photo[] = generatedPhotos;
+
 export type CategoryId = "portre" | "paros" | "szezonalis" | "kreativ";
 
 export type Photo = {
@@ -49,7 +59,7 @@ export const photos: Photo[] = [
   ...kiemelt
     .map((id) => generatedPhotos.find((p) => p.id === id))
     .filter((p): p is Photo => Boolean(p)),
-  ...generatedPhotos.filter((p) => !kiemelt.includes(p.id)),
+  ...generatedPhotos.filter((p) => !kiemelt.includes(p.id) && p.id !== ROLAM_KEP),
 ];
 
 /**

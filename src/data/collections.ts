@@ -96,16 +96,18 @@ export const collections: Collection[] = [
  * Az Instagram-anyag megy elöl — frissebb és egységesebb tónusú.
  */
 export const kiemelt: string[] = [
-  "paros-i042",
-  "portre-i063",
-  "kreativ-i128",
-  "paros-i086",
-  "portre-i035",
-  "kreativ-i134",
-  "paros-i107",
-  "portre-i005",
+  // Szándékosan MÁS képek, mint a fenti blokkokban — így egy fotó sem
+  // szerepel kétszer az oldalon.
+  "paros-i049",
+  "portre-i069",
+  "kreativ-i131",
+  "paros-i105",
+  "portre-i095",
+  "kreativ-i124",
+  "paros-i085",
+  "portre-i011",
   "szezonalis-i027",
-  "paros-i118",
-  "portre-i098",
-  "kreativ-i130",
+  "paros-i141",
+  "portre-i064",
+  "kreativ-i129",
 ];
