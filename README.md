@@ -8,7 +8,7 @@ Fotós portfólió weboldal. Szigorúan fekete-fehér arculat, a fókusz a képe
 npm run dev      # fejlesztői szerver
 npm run build    # éles build a dist/ mappába
 npm run preview  # a kész build helyi kipróbálása
-npm run build:single  # EGYFÁJLOS build: dist-single/index.html (duplakattintható)
+npm run build:single  # EGYFÁJLOS build: dist-single/index.html + b.html (duplakattintható)
 ```
 
 > **A `dist/index.html` duplakattintással üres fehér oldal — ez nem hiba.**
@@ -24,6 +24,43 @@ npm run build:single  # EGYFÁJLOS build: dist-single/index.html (duplakattintha
 > internetről töltődnek.
 
 ---
+
+## Két arculat: „A" és „B"
+
+Ugyanaz a tartalom és ugyanazok a fotók **két külön oldalon**, hogy össze
+lehessen hasonlítani őket:
+
+| | **A verzió** | **B verzió** |
+|---|---|---|
+| Oldal | `index.html` | `b.html` |
+| Alap | fekete, váltakozó fekete-fehér sávok | papírfehér, egyetlen felület |
+| Betű | EB Garamond + DM Mono | **Inter Tight**, egyedül, 400-as vastagságban |
+| Hierarchia | méret + betűköz + felületváltás | **kizárólag méret és betűköz** |
+| Névjegy | teljes képernyős nyitókép | **számozott fekete kör** minden fejezet előtt |
+| Mozgás | Framer Motion be-úszások | nincs |
+| Kód | `src/App.tsx`, `src/components/` | `src/b/` (saját CSS, saját komponensek) |
+
+A két verzió **közös adatfájlokon osztozik** (`src/data/` — elérhetőségek,
+képlista, kategóriák), így a tartalmat elég egy helyen javítani. Minden más
+külön van: a B verziónak saját stíluslapja (`src/b/index-b.css`) és saját
+komponenskészlete van, tehát az A verziót nem érinti, ha a B változik.
+
+```bash
+npm run dev          # http://localhost:5173/      → A
+                     # http://localhost:5173/b.html → B
+npm run build        # mindkét oldal a dist/ mappába
+npm run deploy       # deploy/index.html + deploy/b.html (duplakattinthatók)
+```
+
+Duplakattintásra: `MEGNYITAS.cmd` (A) és `B-VERZIO.cmd` (B).
+
+**A B verzió tervezési szabályai** (a stílus-referenciából, `src/b/index-b.css`
+tetején is olvashatók): nulla szín (a fotó az egyetlen színes elem), nincs
+félkövér és nincs dőlt, nincs árnyék, csak hat betűméret (12 / 16 / 18 / 24 /
+40 / 64 px), a képek 12 px-es, a gombok 8 px-es lekerekítéssel, a `#f2f2f2`
+kizárólag csíkozott listasorokra való, és a hamburgeren kívül nincs ikon.
+
+A `b.html` `noindex` — ez összehasonlító változat, nem élesítendő oldal.
 
 ## Szerkezet
 

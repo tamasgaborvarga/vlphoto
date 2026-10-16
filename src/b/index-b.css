@@ -1,0 +1,131 @@
+/* A B verzió CSAK a src/b mappát pásztázza — így az A verzió osztályai nem
+   kerülnek bele ebbe a stíluslapba, és fordítva sem. */
+@import "tailwindcss" source(none);
+@source ".";
+
+/* ------------------------------------------------------------------
+   VL photo — „B" arculat (acolorbright)
+
+   Tipográfiai monolit: papírfehér lap, fekete tinta, NULLA szín. A
+   hierarchia kizárólag a MÉRETBŐL és a betűközből jön — nincs félkövér,
+   nincs dőlt, nincs árnyék, nincs kiemelő szín. Az egyetlen színes elem
+   maga a fotó.
+
+   A szekciók élén álló SZÁMOZOTT FEKETE KÖR a rendszer gerince: a hosszú
+   görgetést öt megszámozott fejezetre tagolja.
+   ------------------------------------------------------------------ */
+@theme {
+  /* ---- Színek (0% telítettség) ---- */
+  --color-ink-black: #1a1a1a; /* minden olvasható szöveg, szerkezeti keret */
+  --color-charcoal: #262626; /* kitöltött gombok felülete */
+  --color-graphite: #666666; /* kenyérszöveg, másodlagos szöveg */
+  --color-ash: #999999; /* halk felirat, közepes kontrasztú keret */
+  --color-fog: #e6e6e6; /* hajszálvonal, mezőkeret */
+  --color-mist: #f2f2f2; /* csíkozott listasor — MÁSRA NEM */
+  --color-paper: #ffffff; /* a lap maga */
+  --color-pure-black: #000000; /* CSAK a számozott körök és az SVG-k */
+
+  /* ---- Betűtípus ---- */
+  /* Egyetlen családot használ az egész oldal. Az „Inter Tight" a
+     RiformaLLWeb hivatalos helyettesítője: neo-groteszk, enyhén humanista.
+     A ligatúrák kikapcsolva, ahogy az eredeti rendszerben. */
+  --font-riforma:
+    "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Típusskála — HAT lépcső, ennél több nincs ----
+     12 / 16 / 18 / 24 / 40 / 64 px. A betűköz mindenhol -0,01em. */
+  --text-caption: 12px;
+  --text-caption--line-height: 1.2;
+  --text-caption--letter-spacing: -0.12px;
+
+  --text-body-sm: 16px;
+  --text-body-sm--line-height: 1.25;
+  --text-body-sm--letter-spacing: -0.16px;
+
+  --text-body: 18px;
+  --text-body--line-height: 1.25;
+  --text-body--letter-spacing: -0.18px;
+
+  --text-subheading: 24px;
+  --text-subheading--line-height: 1.15;
+  --text-subheading--letter-spacing: -0.24px;
+
+  --text-heading: 40px;
+  --text-heading--line-height: 1.1;
+  --text-heading--letter-spacing: -0.4px;
+
+  --text-display: 64px;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.64px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-black);
+    font-family: var(--font-riforma);
+    /* 400 az EGYETLEN megengedett vastagság. */
+    font-weight: 400;
+    font-feature-settings: "liga" 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Félkövér sehol: a rendszer a méretből épít hierarchiát. */
+  h1,
+  h2,
+  h3,
+  h4,
+  strong,
+  b {
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: var(--color-ink-black);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink-black);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* 1200 px-es lapszélesség, 32 px-es margóval — a rendszer egyetlen
+     vízszintes kerete. */
+  .wrap {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 1200px;
+    padding-inline: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 32px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

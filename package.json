@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "build:single": "vite build --config vite.single.config.ts",
+    "build:single": "node tools/build-single.mjs",
     "galeria": "node tools/scan-gallery.mjs",
     "deploy": "npm run build:single && node tools/make-deploy.mjs",
     "deploy:check": "vite preview --outDir deploy --port 4300 --strictPort --host 127.0.0.1",
