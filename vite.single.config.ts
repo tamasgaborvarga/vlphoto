@@ -13,11 +13,12 @@ import { resolve } from 'node:path'
  * A beágyazás miatt EGYSZERRE CSAK EGY oldal épülhet (a kódszeletelés ki van
  * kapcsolva), ezért a két változat két külön futásban készül el:
  *
- *   npm run build:single     →  tools/build-single.mjs futtatja mindkettőt
+ *   npm run build:single     →  tools/build-single.mjs futtatja mindhármat
  *
- * A `VL_OLDAL=b` környezeti változó választja a B verziót.
+ * A `VL_OLDAL=b` / `VL_OLDAL=c` környezeti változó választja a B / C verziót.
  */
-const bVerzio = process.env.VL_OLDAL === 'b'
+const oldal = process.env.VL_OLDAL ?? 'a'
+const BELEPO: Record<string, string> = { a: 'index.html', b: 'b.html', c: 'c.html' }
 
 export default defineConfig({
   base: './',
@@ -25,9 +26,9 @@ export default defineConfig({
   build: {
     outDir: 'dist-single',
     // Csak az első futás üríti a mappát, különben a másik oldal eltűnne.
-    emptyOutDir: !bVerzio,
+    emptyOutDir: oldal === 'a',
     rollupOptions: {
-      input: resolve(import.meta.dirname, bVerzio ? 'b.html' : 'index.html'),
+      input: resolve(import.meta.dirname, BELEPO[oldal] ?? 'index.html'),
     },
   },
 })

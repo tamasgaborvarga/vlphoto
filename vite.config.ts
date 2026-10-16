@@ -9,7 +9,8 @@ import { resolve } from 'node:path'
 // KÉT OLDAL épül:
 //   index.html — az „A" verzió (sötét, EB Garamond)
 //   b.html     — a „B" verzió (papírfehér, Inter Tight, számozott fejezetek)
-// A kettő közös adatfájlokon (src/data) osztozik, minden más külön van.
+//   c.html     — a „C" verzió („Monográfia”: mészkő + grafit, Clash Grotesk + Satoshi)
+// A három közös adatfájlokon (src/data) osztozik, minden más külön van.
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
@@ -18,6 +19,7 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         b: resolve(import.meta.dirname, 'b.html'),
+        c: resolve(import.meta.dirname, 'c.html'),
       },
     },
   },
