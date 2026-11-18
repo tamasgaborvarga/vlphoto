@@ -19,6 +19,10 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
 
   useScrollLock(open);
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+  // Bezáráskor a fókusz visszakerül arra a képre, amelyik megnyitotta.
+  const returnFocus = useRef<HTMLElement | null>(null);
+
   const go = useCallback(
     (delta: number) => {
       if (index === null || photos.length === 0) return;
@@ -29,17 +33,37 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
 
   useEffect(() => {
     if (!open) return;
+    returnFocus.current ??= document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowRight") go(1);
       if (e.key === "ArrowLeft") go(-1);
+      // Fókuszcsapda: a Tab nem szökhet ki a párbeszédablakból.
+      if (e.key === "Tab" && dialogRef.current) {
+        const items = dialogRef.current.querySelectorAll<HTMLElement>("button");
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
     };
 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose, go]);
+
+  useEffect(() => {
+    if (open) return;
+    returnFocus.current?.focus({ preventScroll: true });
+    returnFocus.current = null;
+  }, [open]);
 
   const photo = index !== null ? photos[index] : null;
 
@@ -50,16 +74,17 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label="Kép nagyítva"
+          ref={dialogRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="surface-fixed-dark fixed inset-0 z-[60] flex flex-col bg-bg/95 backdrop-blur-sm"
+          transition={{ duration: 0.2 }}
+          className="surface-fixed-dark fixed inset-0 z-[60] flex flex-col bg-bg/95"
           onClick={onClose}
         >
           {/* Fejléc: számláló + bezárás */}
           <div className="flex items-center justify-between px-5 py-4 sm:px-8 sm:py-6">
-            <span className="text-label font-light font-mono uppercase tracking-[0.3em] text-muted">
+            <span className="font-mono text-label uppercase tabular-nums tracking-[0.3em] text-muted">
               {index + 1} / {photos.length}
             </span>
             <button
@@ -67,7 +92,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
               type="button"
               onClick={onClose}
               aria-label="Bezárás"
-              className="-mr-2 p-2 text-strong transition-colors hover:text-fg"
+              className="-mr-2 p-2 text-strong transition-colors duration-200 hover:text-fg"
             >
               <X size={24} strokeWidth={1} />
             </button>
@@ -86,7 +111,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
                 initial={{ opacity: 0, scale: 0.985 }}
                 animate={{ opacity: loadedId === photo.id ? 1 : 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.985 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 onLoad={() => setLoadedId(photo.id)}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -105,7 +130,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
                   type="button"
                   onClick={() => go(-1)}
                   aria-label="Előző kép"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-muted transition-colors hover:text-fg sm:left-4"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-muted transition-colors duration-200 hover:text-fg sm:left-4"
                 >
                   <ChevronLeft size={34} strokeWidth={1} />
                 </button>
@@ -113,7 +138,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
                   type="button"
                   onClick={() => go(1)}
                   aria-label="Következő kép"
-                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-muted transition-colors hover:text-fg sm:right-4"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-muted transition-colors duration-200 hover:text-fg sm:right-4"
                 >
                   <ChevronRight size={34} strokeWidth={1} />
                 </button>
@@ -123,7 +148,7 @@ export function Lightbox({ photos, index, onClose, onNavigate }: Props) {
 
           {/* Képaláírás */}
           <div className="px-5 py-6 text-center sm:px-8 sm:py-8">
-            <p className="mx-auto max-w-xl text-xs font-light leading-relaxed text-muted sm:text-sm">
+            <p className="mx-auto max-w-xl text-sm leading-relaxed text-muted sm:text-base">
               {photo.alt}
             </p>
           </div>

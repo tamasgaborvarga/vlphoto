@@ -11,9 +11,9 @@ const ease = [0.22, 1, 0.36, 1] as const;
  */
 const PONTOK = [
   "Portré",
-  "Jegyes & páros",
+  "Jegyes és páros",
   "Kreatív szabadtéri",
-  "Karácsonyi & szezonális",
+  "Karácsonyi és szezonális",
 ];
 
 /** HELYŐRZŐ: Lilláról nincs fotónk, ezért az egyik munkája áll itt. */
@@ -27,10 +27,10 @@ export function About() {
       <div className="container-editorial">
         <div className="grid grid-cols-12 gap-x-5 gap-y-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1, ease }}
+            transition={{ duration: 0.5, ease }}
             className="col-span-12 lg:col-span-5"
           >
             {kep && (
@@ -50,10 +50,10 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1, delay: 0.12, ease }}
+            transition={{ duration: 0.5, delay: 0.06, ease }}
             className="col-span-12 lg:col-span-6 lg:col-start-7"
           >
             <p className="font-mono text-label-sm uppercase tracking-[0.32em] text-muted">Rólam</p>
@@ -79,12 +79,9 @@ export function About() {
             </div>
 
             <ul className="mt-12 divide-y divide-line border-y border-line">
-              {PONTOK.map((pont, i) => (
-                <li key={pont} className="flex items-baseline gap-6 py-4">
-                  <span className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-lg sm:text-xl">{pont}</span>
+              {PONTOK.map((pont) => (
+                <li key={pont} className="py-4 font-display text-lg sm:text-xl">
+                  {pont}
                 </li>
               ))}
             </ul>

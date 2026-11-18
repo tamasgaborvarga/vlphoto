@@ -37,22 +37,24 @@ export function Archive({ filter, onFilterChange }: Props) {
     <section id="archive" className="surface scroll-mt-20 bg-bg py-24 sm:py-32">
       <div className="container-editorial">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease }}
+          transition={{ duration: 0.5, ease }}
           className="flex items-baseline justify-between border-b border-line pb-6"
         >
           <h2 className="font-mono text-label uppercase tracking-[0.32em] text-fg">
             Teljes anyag
           </h2>
-          <span className="font-mono text-label-sm uppercase tracking-[0.28em] text-muted">
+          <span className="font-mono text-label-sm uppercase tabular-nums tracking-[0.28em] text-muted">
             {shown.length} / {visible.length}
           </span>
         </motion.div>
 
+        {/* Szűrőgombok (aria-pressed), nem tab-lista: a tab-szerephez
+            nyílbillentyűs vezérlés és tabpanel tartozna, ami itt nincs. */}
         <div
-          role="tablist"
+          role="group"
           aria-label="Szűrés kategória szerint"
           className="mt-8 flex flex-wrap gap-x-7 gap-y-3"
         >
@@ -62,10 +64,9 @@ export function Archive({ filter, onFilterChange }: Props) {
               <button
                 key={cat.id}
                 type="button"
-                role="tab"
-                aria-selected={active}
+                aria-pressed={active}
                 onClick={() => onFilterChange(cat.id)}
-                className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-sm uppercase tracking-[0.24em] transition-colors duration-500 ${
+                className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-sm uppercase tracking-[0.24em] transition-colors duration-200 ${
                   active ? "text-fg" : "text-muted hover:text-fg"
                 }`}
               >
@@ -87,7 +88,7 @@ export function Archive({ filter, onFilterChange }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
             className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3 lg:gap-7"
           >
             {shown.map((photo, i) => (
@@ -109,10 +110,10 @@ export function Archive({ filter, onFilterChange }: Props) {
               onClick={() => setLimit((l) => l + ADAG)}
               className="group -my-3 inline-flex items-center gap-3 py-3 font-mono text-label uppercase tracking-[0.28em] text-fg"
             >
-              <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
+              <span className="border-b border-fg/30 pb-1 transition-colors duration-200 group-hover:border-fg">
                 Több kép
               </span>
-              <span className="text-muted">{maradek}</span>
+              <span className="tabular-nums text-muted">{maradek}</span>
             </button>
           </div>
         )}

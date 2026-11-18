@@ -60,7 +60,7 @@ export type Category = { id: "osszes" | CategoryId; label: string };
 
 const CATEGORY_LABELS: Record<CategoryId, string> = {
   portre: "Portré",
-  paros: "Páros & Jegyes",
+  paros: "Jegyes és páros",
   szezonalis: "Szezonális",
   kreativ: "Kreatív szabadtéri",
 };

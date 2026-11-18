@@ -16,21 +16,23 @@ export function Footer() {
             href={site.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-500 hover:text-fg"
+            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-200 hover:text-fg"
           >
             Instagram
           </a>
           <a
             href={site.emailHref}
-            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-500 hover:text-fg"
+            className="-my-3 inline-flex min-h-11 items-center py-3 transition-colors duration-200 hover:text-fg"
           >
             E-mail
           </a>
         </div>
       </div>
 
-      <div className="container-editorial mt-12 border-t border-line pt-6">
-        <p className="font-mono text-label-sm uppercase tracking-[0.24em] text-muted">
+      {/* A vonal a belső elemen van, hogy a tartalom szélességéig érjen,
+          ne a konténer belső margójáig. */}
+      <div className="container-editorial mt-12">
+        <p className="border-t border-line pt-6 font-mono text-label-sm uppercase tracking-[0.24em] text-muted">
           &copy; {new Date().getFullYear()} VL photo &mdash; Varga Lilla
         </p>
       </div>

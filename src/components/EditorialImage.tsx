@@ -53,22 +53,32 @@ export function EditorialImage({
       onLoad={() => setLoaded(true)}
       className={`${
         heightClass ? "h-full w-auto max-w-full" : "h-full w-full"
-      } object-contain transition-[opacity,transform] duration-500 ease-out group-hover:scale-[1.02] ${
+      } object-contain transition-[opacity,transform] duration-300 ease-out group-hover:scale-[1.02] ${
         loaded ? "opacity-100" : "opacity-0"
       }`}
     />
   );
 
+  // Nagyítható kép: valódi gomb, hogy billentyűzettel is megnyíljon
+  // (korábban csak a <figure> onClick-je volt — Tab-bal elérhetetlen).
+  const inner = onOpen ? (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`Nagyítás: ${photo.alt}`}
+      className="block h-full w-full cursor-zoom-in focus-visible:outline-offset-[-4px]"
+    >
+      {img}
+    </button>
+  ) : (
+    img
+  );
+
   // Fix magasságú változat: a szélesség a képarányból jön.
   if (heightClass) {
     return (
-      <figure
-        className={`group relative overflow-hidden ${heightClass} ${
-          onOpen ? "cursor-zoom-in" : ""
-        } ${className}`}
-        onClick={onOpen}
-      >
-        {img}
+      <figure className={`group relative overflow-hidden ${heightClass} ${className}`}>
+        {inner}
       </figure>
     );
   }
@@ -76,11 +86,10 @@ export function EditorialImage({
   // Alapértelmezett: a doboz aránya MEGEGYEZIK a képével, tehát nincs vágás.
   return (
     <figure
-      className={`group relative overflow-hidden bg-raise ${onOpen ? "cursor-zoom-in" : ""} ${className}`}
+      className={`group relative overflow-hidden bg-raise ${className}`}
       style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
-      onClick={onOpen}
     >
-      {img}
+      {inner}
     </figure>
   );
 }

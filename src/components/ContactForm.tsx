@@ -42,7 +42,7 @@ export function ContactForm() {
   };
 
   const field =
-    "w-full border-b border-line bg-transparent py-3 text-base text-fg outline-none transition-colors duration-500 placeholder:text-muted focus:border-fg";
+    "w-full border-b border-line bg-transparent py-3 text-base text-fg outline-none transition-colors duration-200 placeholder:text-muted focus:border-fg";
   const label = "font-mono text-label-sm uppercase tracking-[0.28em] text-muted";
 
   return (
@@ -109,12 +109,10 @@ export function ContactForm() {
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          className="group -my-3 inline-flex items-center gap-3 self-start py-3 font-mono text-label uppercase tracking-[0.28em] text-fg"
+          className="group inline-flex min-h-11 items-center gap-3 self-start border border-fg px-7 py-4 font-mono text-label uppercase tracking-[0.28em] text-fg transition-colors duration-200 hover:bg-fg hover:text-bg active:scale-[0.97]"
         >
-          <span className="border-b border-fg/40 pb-1 transition-colors duration-500 group-hover:border-fg">
-            Üzenet küldése
-          </span>
-          <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
+          Üzenet küldése
+          <span className="transition-transform duration-200 ease-out group-hover:translate-x-1.5">
             &rarr;
           </span>
         </button>

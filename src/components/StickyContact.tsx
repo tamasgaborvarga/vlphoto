@@ -28,12 +28,11 @@ export function StickyContact() {
       {show && (
         <motion.button
           type="button"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
+          exit={{ opacity: 0, y: 12, transition: { duration: 0.2, ease: [0.4, 0, 1, 1] } }}
           onClick={() => scrollToSection("contact")}
-          className="surface-fixed-dark fixed bottom-5 left-1/2 z-40 -translate-x-1/2 rounded-full border border-fg/25 bg-ink/80 px-7 py-3.5 font-mono text-label-sm uppercase tracking-[0.26em] text-fg backdrop-blur-md md:hidden"
+          className="surface-fixed-dark fixed bottom-5 left-1/2 z-40 -translate-x-1/2 min-h-11 whitespace-nowrap border border-fg/40 bg-ink px-7 py-3.5 font-mono text-label uppercase tracking-[0.26em] text-fg active:scale-[0.97] md:hidden"
         >
           Foglalj fotózást
         </motion.button>

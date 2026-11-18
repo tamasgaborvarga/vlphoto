@@ -47,9 +47,9 @@ export function Header() {
       </a>
 
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
           solid
-            ? "surface border-b border-line bg-bg/85 backdrop-blur-md"
+            ? "surface border-b border-line bg-bg"
             : "surface-fixed-dark border-b border-transparent bg-transparent"
         }`}
       >
@@ -64,7 +64,7 @@ export function Header() {
             tabIndex={solid ? 0 : -1}
             /* A nyitókép fölött nincs logó: a hero maga mondja ki a márkanevet,
                kétszer egy képernyőn fölösleges. Görgetéskor úszik be. */
-            className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-lg uppercase tracking-[0.34em] text-fg transition-opacity duration-700 ${
+            className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label-lg uppercase tracking-[0.34em] text-fg transition-opacity duration-300 ${
               solid ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
@@ -80,7 +80,7 @@ export function Header() {
                       type="button"
                       onClick={() => go(link.id)}
                       aria-current={active === link.id ? "true" : undefined}
-                      className={`font-mono text-label uppercase tracking-[0.26em] transition-colors duration-500 hover:text-fg ${
+                      className={`-my-3 inline-flex min-h-11 items-center py-3 font-mono text-label uppercase tracking-[0.26em] transition-colors duration-200 hover:text-fg ${
                         active === link.id ? "text-fg" : "text-muted"
                       }`}
                     >
@@ -96,7 +96,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="VL photo Instagram-oldala"
-              className="hidden text-fg transition-opacity duration-500 hover:opacity-60 md:block"
+              className="hidden text-fg transition-opacity duration-200 hover:opacity-60 md:block"
             >
               <InstagramIcon size={17} strokeWidth={1.1} />
             </a>
@@ -122,7 +122,7 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             className="surface fixed inset-0 z-40 bg-bg md:hidden"
           >
             <nav
@@ -135,7 +135,7 @@ export function Header() {
                     key={link.id}
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i + 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: 0.03 * i + 0.05, duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <button
                       type="button"
@@ -151,7 +151,7 @@ export function Header() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.32, duration: 0.5 }}
+                transition={{ delay: 0.15, duration: 0.25 }}
                 className="mt-12 space-y-2 font-mono text-label uppercase tracking-[0.2em] text-muted"
               >
                 <a href={site.emailHref} className="-my-2 block py-2 hover:text-fg">
@@ -164,7 +164,7 @@ export function Header() {
                   href={site.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block hover:text-fg"
+                  className="-my-2 block py-2 hover:text-fg"
                 >
                   Instagram
                 </a>

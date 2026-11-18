@@ -5,7 +5,6 @@ import { Hero } from "./components/Hero";
 import { Collections } from "./components/Collections";
 import { About } from "./components/About";
 import { Archive } from "./components/Archive";
-import { Cta } from "./components/Cta";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { StickyContact } from "./components/StickyContact";
@@ -30,7 +29,6 @@ export default function App() {
           <Collections onOpenCategory={openCategory} />
           <About />
           <Archive filter={filter} onFilterChange={setFilter} />
-          <Cta />
           <Contact />
         </main>
         <Footer />

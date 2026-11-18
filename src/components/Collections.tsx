@@ -33,10 +33,10 @@ export function Collections({ onOpenCategory }: Props) {
           <div key={collection.id} className={ci > 0 ? "mt-28 sm:mt-36 lg:mt-48" : ""}>
             <div className="container-editorial">
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.9, ease }}
+                transition={{ duration: 0.5, ease }}
                 className="border-t border-line pt-14 lg:flex lg:items-end lg:justify-between"
               >
                 <div>
@@ -54,12 +54,12 @@ export function Collections({ onOpenCategory }: Props) {
                 <button
                   type="button"
                   onClick={() => onOpenCategory(collection.id)}
-                  className="group mt-8 inline-flex items-center gap-3 py-3 font-mono text-label uppercase tracking-[0.28em] text-fg lg:mt-0 lg:-my-3"
+                  className="group mt-8 inline-flex min-h-11 items-center gap-3 py-3 font-mono text-label uppercase tracking-[0.28em] text-fg lg:mt-0 lg:-my-3"
                 >
-                  <span className="border-b border-fg/30 pb-1 transition-colors duration-500 group-hover:border-fg">
+                  <span className="border-b border-fg/30 pb-1 transition-colors duration-200 group-hover:border-fg">
                     Összes {collection.title.toLowerCase()} kép
                   </span>
-                  <span className="transition-transform duration-500 ease-out group-hover:translate-x-1.5">
+                  <span className="transition-transform duration-200 ease-out group-hover:translate-x-1.5">
                     &rarr;
                   </span>
                 </button>
